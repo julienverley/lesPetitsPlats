@@ -9,6 +9,7 @@
     <!--CSS-->
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"><!-- Icones -->
     <title>Les petits plats</title>
   </head>
   <body>
@@ -19,31 +20,57 @@
     <!-- MAIN -->
     <main>
       
-      <section class="py-1">
+      <section class="py-3">
         <div class="container">
-          <div class="row gy-4 bg-primary"><!-- logo -->
-            <div class="col-12 col-md-6">
-              <img src="../img/vector.jpg" alt="Logo Vector" width="5%">
+          <div class="row justify-content-center"><!-- logo Vector -->
+            <div class="col-1 py-3">
+              <img src="../img/vector.svg" alt="Logo Vector" class="w-100">
             </div>
           </div>
-          <div class="row gy-4 bg-primary"><!-- logo -->
-            <div class="col-12 col-md-6">
-              <img src="../img/lespetitsplats.jpg" alt="Logo Les petits plats" width="25%">
+          <div class="row justify-content-center"><!-- logo Les petits plats -->
+            <div class="col-5 py-3">
+              <img src="../img/lespetitsplats.svg" alt="Logo Les petits plats" class="w-100">
             </div>
           </div>
         </div>
       </section>      
 
-      <section class="py-5">
+      <section class="py-3"><!-- Search --> 
         <div class="container">
-          <div class="row gy-4 bg-primary">
-            <div class="col-12 col-md-6">
-              <h1>Créer un champ de recherche</h1>
+          <div class="row gy-4 bg-secondary">
+            <div class="col-12 py-2">
+              <h1>Search field</h1>
+              <div><i class="bi bi-search"></i></div><!-- Magnifying glass -->
             </div>
           </div>
         </div>
       </section>
 
+      <section class="py-3"><!-- Listboxs -->
+        <div class="container">
+          <div class="row gy-4 bg-primary">
+            <div class="col-12 col-md-6">
+              <h1>3 listboxs + tags</h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-3"><!-- cards -->
+        <div class="container">
+          <div class="row justify-content-between gy-4"> <!-- gap -->
+            <div class="col-4 bg-primary"><!-- gap -->
+              <h1>Card column 1</h1>
+            </div>
+            <div class="col-4 bg-primary">
+              <h1>Card column 2</h1>
+            </div>
+            <div class="col-4 bg-primary">
+              <h1>Card column 3</h1>
+            </div>
+          </div>
+        </div>
+      </section>
 
   
 
@@ -62,6 +89,8 @@
 
 
     <!-- Scripts -->
+    <script src="./scripts/recipes.js" type="module"></script>
+    <script src="./scripts/tags.js" type="module"></script>
 
     <!-- Bootstrap JS bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
