@@ -1,0 +1,33 @@
+/* style.css */
+
+
+/* Search */
+.search-field {
+    display: flex;
+    justify-content: space-between;
+}
+.search-field input {
+    border: none; 
+    width: 70em;
+}
+
+/* Cards */
+.card-header {
+    height: 150px;
+    background-color: #C7BEBE;
+}
+.card-body {
+    background-color: #E7E7E7;
+}
+.card-body-top {
+    display: flex;
+}
+.card-body-bottom {
+    display: flex;
+}
+.recipe-ingredients {
+    font-size: x-small;
+}
+.recipe-text {
+    font-size: x-small;
+}

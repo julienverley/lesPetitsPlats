@@ -1,56 +1,47 @@
-import { recipes } from "./recipes.js";
-//console.log(recipes);
+import { recipes } from "./data/recipes.js";
 
 /* const buildtags = () => {
+    
 }
 buildtags();  */
 
-/* let i; 
-for (i = 0; i < recipes.length; i++) {
-    console.log(recipes[i].ingredients[0].ingredient); 
-}  */
-
-/* const ingredients = []; 
-const appliance = []; // = appareil */ // Antoine
-
-/* recipes.forEach(recipe => { // Antoine 
-    recipe.ingredients.forEach(ingredient => {
-        console.log(ingredient); // PB l'objet avec ingredient, quantity et unit
-         if (ingredients.includes(ingredient.ingredient)) { // A revoir car doublons 
-             console.log('EXISTE DEJA');
-         } else {
-             ingredients.push(ingredient.ingredient); 
-         }
-    })
-})
-console.log(ingredients); */
-
-/* recipes.forEach(recipe => {
-    recipe.ingredients.forEach(ingredientQuantityUnit => {
-        
-        console.log(ingredientQuantityUnit); // PB l'objet avec ingredient, quantity et unit
-         if (ingredients.includes(ingredientQuantityUnit.ingredient)) { // A revoir car doublons 
-             console.log('EXISTE DEJA');
-         } else {
-             ingredients.push(ingredientQuantityUnit.ingredient); 
-         }
-    })
-})
-console.log(ingredients);
- */
-
-function onlyUnique (value, index, self) {
-    return self.indexOf(value) === index
+function noDuplicates (value, index, self) { // A revoir 
+    return self.indexOf(value) === index // A revoir 
 }
 
 function getIngredients (recipes) {
-    const totalIngredients = []
+    const allIngredients = []
     recipes.forEach(recipe => {
-        recipe.ingredients.forEach(object => totalIngredients.push(object.ingredient))
+        recipe.ingredients.forEach(object => allIngredients.push(object.ingredient))
     })
-    const filteredIngredients = totalIngredients.filter(onlyUnique)
-    filteredIngredients.sort((a, b) => a.localeCompare(b))
-    return filteredIngredients
+    const noDuplicatesIngredients = allIngredients.filter(noDuplicates)
+    noDuplicatesIngredients.sort((a, b) => a.localeCompare(b))
+    //console.table(noDuplicatesIngredients); // Modifier le .json ? 
+    return noDuplicatesIngredients
 }
 
-export { getIngredients }
+function getAppliances (recipes) {
+    const allAppliances = []
+    recipes.forEach(recipe => {
+        allAppliances.push(recipe.appliance)
+    })
+    const noDuplicatesAppliances = allAppliances.filter(noDuplicates)
+    noDuplicatesAppliances.sort((a, b) => a.localeCompare(b))
+    console.table(noDuplicatesAppliances); // Modifier le .json ? 
+    return noDuplicatesAppliances
+}
+
+function getUstensils (recipes) {
+    const allUstensils = []
+    recipes.forEach(recipe => recipe.ustensils.forEach(ustensil => allUstensils.push(ustensil)))
+    const noDuplicatesUstensils = allUstensils.filter(noDuplicates)
+    noDuplicatesUstensils.sort((a, b) => a.localeCompare(b))
+    // console.table(noDuplicatesUstensils) // Modifier le .json ? 
+    return noDuplicatesUstensils
+}
+
+getIngredients(recipes) // called to display in console.log
+getAppliances(recipes) // called to display in console.log
+getUstensils(recipes) // called to display in console.log
+
+export { getIngredients, getAppliances, getUstensils }
