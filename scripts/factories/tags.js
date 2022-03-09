@@ -1,7 +1,6 @@
-import { recipes } from "./data/recipes.js";
+import { recipes } from "../data/recipes.js";
 
 /* const buildtags = () => {
-    
 }
 buildtags();  */
 
@@ -16,7 +15,7 @@ function getIngredients (recipes) {
     })
     const noDuplicatesIngredients = allIngredients.filter(noDuplicates)
     noDuplicatesIngredients.sort((a, b) => a.localeCompare(b))
-    console.table(noDuplicatesIngredients); // Modifier le .json ? 
+    // console.table(noDuplicatesIngredients); // Modifier le .json ? 
     return noDuplicatesIngredients
 }
 
@@ -40,9 +39,8 @@ function getUstensils (recipes) {
     return noDuplicatesUstensils
 }
 
-getIngredients(recipes) // called to display in console.log
+console.table(getIngredients(recipes)) // called to display in console.log
 getAppliances(recipes) // called to display in console.log
 getUstensils(recipes) // called to display in console.log
 
-export { getIngredients, getAppliances, getUstensils } 
-
+export { getIngredients, getAppliances, getUstensils }
