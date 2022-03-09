@@ -40,10 +40,3 @@ listboxIngredientsBtn.addEventListener('click', (e) => {
         displayUstensils(); 
     }
 })
-
-
-
-
-//displayIngredients(); 
-
-/// A continuer // A revoir
