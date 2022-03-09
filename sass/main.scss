@@ -1,0 +1,14 @@
+/* @use './base/' as base;
+@use './components/' as components;
+@use './layout/' as layout;
+@use './utils/' as utils; */
+
+
+/* Imports of .scss files  */
+@import './utils/variables'; 
+@import './utils/mixins'; 
+@import './base/base'; 
+@import './base/typo'; 
+@import './components/listbox'; 
+@import './layout/cards'; 
+@import './layout/search'; 

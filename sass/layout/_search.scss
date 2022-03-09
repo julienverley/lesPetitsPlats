@@ -1,0 +1,11 @@
+/* Search */
+
+.search-field {
+    display: flex;
+    justify-content: space-between;
+}
+.search-field input {
+    border: none; 
+    width: 70em;
+    outline: none;
+}

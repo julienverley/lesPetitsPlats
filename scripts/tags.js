@@ -44,4 +44,5 @@ getIngredients(recipes) // called to display in console.log
 getAppliances(recipes) // called to display in console.log
 getUstensils(recipes) // called to display in console.log
 
-export { getIngredients, getAppliances, getUstensils }
+export { getIngredients, getAppliances, getUstensils } 
+

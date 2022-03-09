@@ -1,0 +1,131 @@
+/* @use './base/' as base;
+@use './components/' as components;
+@use './layout/' as layout;
+@use './utils/' as utils; */
+/* Imports of .scss files  */
+/* Colors */
+/* Border-radius */
+/* TYPO */
+* {
+  font-family: Lato, sans-serif;
+  font-weight: 400; }
+
+b {
+  font-weight: 700; }
+
+/* LISTBOX */
+.listboxs {
+  display: flex; }
+
+.listbox {
+  margin: 20px 20px 0 0;
+  border-radius: 5px;
+  overflow: hidden;
+  min-width: 130px; }
+
+.listbox-controls {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px 5px 0 0; }
+
+.listbox-btn {
+  height: 60px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  color: white;
+  font-size: 18px;
+  position: relative;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: transparent; }
+
+.listbox-input {
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  outline: none;
+  padding: 0 15px;
+  height: 70px;
+  width: min-content;
+  background-color: transparent; }
+
+.listbox-input::placeholder {
+  color: white;
+  opacity: 1; }
+
+.listbox-input.expanded::placeholder {
+  opacity: .5; }
+
+.listbox-list {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px 50px;
+  line-height: 1em;
+  max-height: 12em;
+  color: white;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 0 0 5px 5px;
+  overflow-y: scroll;
+  scrollbar-color: rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0.1);
+  scrollbar-width: thin; }
+
+.listbox-list li {
+  cursor: pointer; }
+
+#ingredients-controls {
+  background-color: #3282F7; }
+
+#appliances-controls {
+  background-color: #68D9A4; }
+
+#ustensils-controls {
+  background-color: #ED6454; }
+
+#ingredients-list {
+  background-color: #3282F7; }
+
+#appliances-list {
+  background-color: #68D9A4; }
+
+#ustensils-list {
+  background-color: #ED6454; }
+
+.hidden {
+  display: none; /* display listboxs items lists */
+}
+
+/* Cards */
+.card-header {
+  height: 150px;
+  background-color: #C7BEBE; }
+
+.card-body {
+  background-color: #E7E7E7; }
+
+.card-body-top {
+  display: flex; }
+
+.card-body-bottom {
+  display: flex; }
+
+.recipe-ingredients {
+  font-size: x-small; }
+
+.recipe-text {
+  font-size: x-small; }
+
+/* Search */
+.search-field {
+  display: flex;
+  justify-content: space-between; }
+
+.search-field input {
+  border: none;
+  width: 70em;
+  outline: none; }

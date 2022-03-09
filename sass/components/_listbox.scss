@@ -1,4 +1,4 @@
-/* @use '../abstracts/' as a; */
+/* LISTBOX */
 
 .listboxs {
     display: flex;
@@ -14,11 +14,11 @@
 .listbox-controls {
     display: flex;
     justify-content: space-between;
-/*     border-radius: a.$rad a.$rad 0 0;
- */}
+    border-radius: $radius $radius 0 0;
+}
 
 .listbox-btn {
-    height: 70px;
+    height: 60px;
     width: 30px;
     display: flex;
     align-items: center;
@@ -27,14 +27,9 @@
     color: white;
     font-size: 18px;
     position: relative;
-    border-radius: 5px; /* a.$rad; */
+    border-radius: $radius; 
     cursor: pointer;
     background-color: transparent;
-
-    /* &::after {
-        @include a.fontAwesome();
-        content: '\f107'
-    } */
 }
 
 .listbox-input {
@@ -68,7 +63,7 @@
     color: white;
     font-size: 18px;
     padding: 10px;
-    /* border-radius: 0 0 a.$rad a.$rad; */
+    border-radius: 0 0 $radius $radius;
     overflow-y: scroll;
     scrollbar-color: rgba(255, 255, 255, 0.5) rgba(255, 255, 255, .1);
     scrollbar-width: thin;
@@ -80,27 +75,27 @@
 
 
 #ingredients-controls {
-    background-color: #3282F7; /* a.$clr-blue; */
+    background-color: $blue;
 }
 
 #appliances-controls {
-    background-color: #68D9A4; /* a.$clr-green; */
+    background-color: $green; 
 }
 
 #ustensils-controls {
-    background-color: #ED6454; /* a.$clr-red; */
+    background-color: $red; 
 }
 
 #ingredients-list {
-    background-color: #3282F7; /*  a.$clr-blue; */
+    background-color: $blue; 
 }
 
 #appliances-list {
-    background-color: #68D9A4; /*  a.$clr-green; */
+    background-color: $green; 
 }
 
 #ustensils-list {
-    background-color: #ED6454; /*  a.$clr-red; */
+    background-color: $red; 
 }
 
 .hidden {

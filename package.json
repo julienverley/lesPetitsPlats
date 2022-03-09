@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "node-sass": "^7.0.1"
+  },
+  "name": "p7_verley_julien",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julfrontdev/julien_verley_7_30092021.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julfrontdev/julien_verley_7_30092021/issues"
+  },
+  "homepage": "https://github.com/julfrontdev/julien_verley_7_30092021#readme",
+  "description": ""
+}
