@@ -16,7 +16,7 @@ function getIngredients (recipes) {
     })
     const noDuplicatesIngredients = allIngredients.filter(noDuplicates)
     noDuplicatesIngredients.sort((a, b) => a.localeCompare(b))
-    //console.table(noDuplicatesIngredients); // Modifier le .json ? 
+    console.table(noDuplicatesIngredients); // Modifier le .json ? 
     return noDuplicatesIngredients
 }
 
@@ -27,7 +27,7 @@ function getAppliances (recipes) {
     })
     const noDuplicatesAppliances = allAppliances.filter(noDuplicates)
     noDuplicatesAppliances.sort((a, b) => a.localeCompare(b))
-    console.table(noDuplicatesAppliances); // Modifier le .json ? 
+    //console.table(noDuplicatesAppliances); // Modifier le .json ? 
     return noDuplicatesAppliances
 }
 
@@ -36,7 +36,7 @@ function getUstensils (recipes) {
     recipes.forEach(recipe => recipe.ustensils.forEach(ustensil => allUstensils.push(ustensil)))
     const noDuplicatesUstensils = allUstensils.filter(noDuplicates)
     noDuplicatesUstensils.sort((a, b) => a.localeCompare(b))
-    // console.table(noDuplicatesUstensils) // Modifier le .json ? 
+    //console.table(noDuplicatesUstensils) // Modifier le .json ? 
     return noDuplicatesUstensils
 }
 
