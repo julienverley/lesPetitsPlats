@@ -1,23 +1,17 @@
-import { getIngredients, getAppliances, getUstensils } from "../factories/tags"; 
+//import { getIngredients, getAppliances, getUstensils } from "../factories/tags.js";
+//import { recipes } from "../data/recipes.js";
 
-
-
-const listboxList = document.querySelector('.listbox-list')
-const listboxIngredientsBtn = document.getElementById('ingredients-btn')
-const listboxAppliancesBtn = document.getElementById('appliances-btn')
-const listboxUstensilsBtn = document.getElementById('ustensils-btn')
-
-const displayIngredients = () => {
-    document.getElementById('ingredients-list').textContent = getIngredients(recipes)
-    listboxList.classList.remove('hidden')
+const displayIngredients = ($recipes, $getTags, $listboxList) => { // informative (red), $parameters
+    document.getElementById("ingredients-list").textContent = $getTags($recipes) // cf. getIngredients()
+    $listboxList.classList.remove('hidden')
 }
-function displayAppliances() {
-    document.getElementById('appliances-list').textContent = getAppliances(recipes)
-    listboxList.classList.remove('hidden')
+function displayAppliances($recipes, $getTags, $listboxList) {
+    document.getElementById('appliances-list').textContent = $getTags($recipes)
+    $listboxList.classList.remove('hidden')
 }
-function displayUstensils() {
-    document.getElementById('ustensils-list').textContent = getUstensils(recipes)
-    listboxList.classList.remove('hidden')
+function displayUstensils($recipes, $getTags, $listboxList) {
+    document.getElementById('ustensils-list').textContent = $getTags($recipes)
+    $listboxList.classList.remove('hidden')
 }
 
 /* const displayTruc = (listID, customFunction ) => {
@@ -30,13 +24,4 @@ displayTruc('ingredients-list', getIngredients)
 displayTruc('ingredients-list', getIngredients) */
 
 
-listboxIngredientsBtn.addEventListener('click', (e) => {
-    if (e.target.id == 'ingredients-btn') {
-        displayIngredients(); 
-        // displayTruc('ingredients-list', getIngredients)
-    } else if (e.target.id == 'appliances-btn') {
-        displayAppliances(); 
-    } else if (e.target.id == 'ustensils-btn') {
-        displayUstensils(); 
-    }
-})
+export { displayIngredients, displayAppliances, displayUstensils }
