@@ -40,7 +40,7 @@ export const getUstensils = ($recipes) => {
 
 // console.table(getIngredients(recipes)) // called to display in console.log
 // console.table(getAppliances(recipes)) // called to display in console.log
-console.table(getUstensils(recipes)) // called to display in console.log
+//console.table(getUstensils(recipes)) // called to display in console.log
 
 
 // Commment accéder pex aux ustensils du DOM ? 

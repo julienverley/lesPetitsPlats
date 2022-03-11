@@ -19,6 +19,14 @@ const listboxIngredientsBtn = document.getElementById('ingredients-btn')
 const listboxAppliancesBtn = document.getElementById('appliances-btn')
 const listboxUstensilsBtn = document.getElementById('ustensils-btn')
 
+
+    const liste = getUstensils(recipes)
+    liste.forEach(item => {
+        const elementListe = document.createElement('li')
+        elementListe.textContent = item
+        listboxUstensilsList.append(elementListe)        
+    });
+
 // EVENTS 
 
 // Listboxs buttons click events
@@ -37,7 +45,8 @@ listboxAppliancesBtn.addEventListener('click', (e) => {
 listboxUstensilsBtn.addEventListener('click', (e) => {
     e.preventDefault()
     if (e.target.id == 'ustensils-btn') {
-        displayUstensils(recipes, getUstensils, listboxUstensilsList); 
+        //displayUstensils(recipes, getUstensils, listboxUstensilsList); 
+        displayUstensils(listboxUstensilsList); 
     }
 })
 
