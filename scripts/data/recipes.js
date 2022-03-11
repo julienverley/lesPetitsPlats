@@ -16,7 +16,7 @@ export const recipes = [
             {
                 "ingredient" : "Crème de coco",
                 "quantity" : 2,
-                "unit" : "cuillères à soupe"
+                "unit" : "Cuillères à soupe"
             },
             {
                 "ingredient" : "Sucre",
@@ -98,7 +98,7 @@ export const recipes = [
             {
                 "ingredient": "Huile d'olive",
                 "quantity": 1,
-               "unit": "cuillères à soupe"
+               "unit": "Cuillères à soupe"
             }
         ],
         "time": 80,

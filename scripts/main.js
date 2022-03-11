@@ -1,24 +1,31 @@
-// Dans le main.js, j'importe la logique et je fais fonctionner
+// Functions are called and used here
+
+// IMPORTS
 
 import { displayIngredients, displayAppliances, displayUstensils } from "./displays/listboxs.js";
 import { getIngredients, getAppliances, getUstensils } from "./factories/tags.js";
 import { recipes } from "./data/recipes.js";
 
+// VARIABLES
+
 // Listboxs lists nodes
+// $listboxList (f° displayIngredients-Appliances-Ustensils)
 const listboxIngredientsList = document.getElementById("ingredients-list")
 const listboxAppliancesList = document.getElementById("appliances-list")
 const listboxUstensilsList = document.getElementById("ustensils-list")
+
 // Listboxs buttons nodes
 const listboxIngredientsBtn = document.getElementById('ingredients-btn')
 const listboxAppliancesBtn = document.getElementById('appliances-btn')
 const listboxUstensilsBtn = document.getElementById('ustensils-btn')
 
-// Listbox click events
+// EVENTS 
+
+// Listboxs buttons click events
 listboxIngredientsBtn.addEventListener('click', (e) => {
     e.preventDefault()
     if (e.target.id == 'ingredients-btn') {
-        displayIngredients(recipes, getIngredients, listboxIngredientsList); 
-        // displayTruc('ingredients-list', getIngredients)
+        displayIngredients(recipes, getIngredients, listboxIngredientsList);
     } 
 })
 listboxAppliancesBtn.addEventListener('click', (e) => {
@@ -39,4 +46,5 @@ listboxUstensilsBtn.addEventListener('click', (e) => {
     if (e.target.id == $id) {
         $function(recipes, $getTags, listboxList); 
     }
-} */
+} */  
+
