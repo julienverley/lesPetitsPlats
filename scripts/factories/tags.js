@@ -12,8 +12,8 @@ const noDuplicates = ($value, $index, $self) => { // Callback à revoir
 // $getTags (f° displays)
 export const getIngredients = ($recipes) => {
     const allIngredients = []
-    $recipes.forEach(recipe => {
-        recipe.ingredients.forEach(object => allIngredients.push(object.ingredient))
+    $recipes.forEach(recipe => { // "recipe" dans le forEach
+        recipe.ingredients.forEach(object => allIngredients.push(object.ingredient)) //"objet" dans le forEach
     })
     const noDuplicatesIngredients = allIngredients.filter(noDuplicates)
     noDuplicatesIngredients.sort((a, b) => a.localeCompare(b))
