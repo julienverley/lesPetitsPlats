@@ -27,26 +27,42 @@ const listboxIngredientsBtn = document.getElementById("ingredients-btn");
 const listboxAppliancesBtn = document.getElementById("appliances-btn");
 const listboxUstensilsBtn = document.getElementById("ustensils-btn");
 
-const liste = getUstensils(recipes); ////////////
-liste.forEach((item) => {
-  const elementListe = document.createElement("li");
-  elementListe.textContent = item;
-  listboxUstensilsList.append(elementListe);
+// Build lists of seperate items
+const listboxAppliancesItems = getAppliances(recipes); ////////////
+listboxAppliancesItems.forEach((item) => {
+  const elementList = document.createElement("li");
+  elementList.textContent = item;
+  listboxAppliancesList.append(elementList);
 });
+/* const listboxUstensilsItems = getUstensils(recipes); ////////////
+listboxUstensilsItems.forEach((item) => {
+  const elementList = document.createElement("li");
+  elementList.textContent = item;
+  listboxUstensilsList.append(elementList);
+}); */
+
+/* const listboxUstensilsItems = getUstensils(recipes); ////////////
+listboxUstensilsItems.forEach((item) => {
+  const elementList = document.createElement("li");
+  elementList.textContent = item;
+  listboxUstensilsList.append(elementList);
+}); */
+
+
 
 // EVENTS
 
 // Listboxs buttons click events
-listboxIngredientsBtn.addEventListener("click", (e) => {
+/* listboxIngredientsBtn.addEventListener("click", (e) => {
   e.preventDefault();
   if (e.target.id == "ingredients-btn") {
     displayIngredients(recipes, getIngredients, listboxIngredientsList); // displayIngredients from listboxs.js (recipes from recipes.js, getIngredients from tags.js, listboxIngredientsList = node)
   }
-});
+}); */
 listboxAppliancesBtn.addEventListener("click", (e) => {
   e.preventDefault();
   if (e.target.id == "appliances-btn") {
-    displayAppliances(recipes, getAppliances, listboxAppliancesList);
+    displayAppliances(listboxAppliancesList);
   }
 });
 listboxUstensilsBtn.addEventListener("click", (e) => {

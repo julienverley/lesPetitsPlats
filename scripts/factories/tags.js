@@ -4,6 +4,33 @@ import { recipes } from "../data/recipes.js"; // Supprimable
 }
 buildtags();  */
 
+
+// Antoine
+
+let tags = [];
+
+function refreshTagList() {
+    document.getElementById('tags').innerHTML = ''; 
+    /*  tags.forEach(tag => {
+        document.getElementById('tags').appendChild(.....)
+    }) */
+}
+
+function addTags(tag) {
+    tags.push(tag) ;
+    refreshTagList();
+}
+
+/* function removeTags(tagLabel) {
+    tags = tags.filter(tag => tag.label !== tagLabel); 
+} */
+// addTags({ label: 'Chocolat', type: "ustensils' });
+
+// Antoine
+
+
+
+
 const noDuplicates = ($value, $index, $self) => { // Callback à revoir
     return $self.indexOf($value) === $index // 
 }
