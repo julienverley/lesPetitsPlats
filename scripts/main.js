@@ -1,5 +1,4 @@
 
-// Imports 
 import {
     showListbox, 
     hideListbox,
@@ -15,7 +14,6 @@ import {
 } from "./factories/buildTags.js" */
 import { recipes } from "./data/recipes.js";
 
-// Variables
 // Listboxs lists nodes
 const listboxIngredientsList = document.getElementById("ingredients-list");
 const listboxAppliancesList = document.getElementById("appliances-list");
