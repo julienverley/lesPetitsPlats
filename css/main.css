@@ -21,7 +21,7 @@ b {
   margin: 20px 20px 0 0;
   border-radius: 5px;
   overflow: hidden;
-  min-width: 130px; }
+  min-width: 170px; }
 
 .listbox-controls {
   display: flex;
@@ -29,6 +29,7 @@ b {
   border-radius: 5px 5px 0 0; }
 
 .listbox-btn {
+  padding-right: 15px;
   height: 60px;
   width: 30px;
   display: flex;
@@ -64,19 +65,20 @@ b {
   display: grid;
   width: 100%;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px 50px;
+  gap: 10px 10px;
   line-height: 1em;
   max-height: 12em;
   color: white;
   font-size: 18px;
-  padding: 10px;
+  padding: 20px;
   border-radius: 0 0 5px 5px;
   overflow-y: scroll;
   scrollbar-color: rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0.1);
   scrollbar-width: thin; }
 
 .listbox-list li {
-  cursor: pointer; }
+  cursor: pointer;
+  list-style: none; }
 
 #ingredients-controls {
   background-color: #3282F7; }
@@ -97,8 +99,7 @@ b {
   background-color: #ED6454; }
 
 .hidden {
-  display: none; /* display listboxs items lists */
-}
+  display: none; }
 
 /* Cards */
 .card-header {
