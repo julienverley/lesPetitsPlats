@@ -28,18 +28,18 @@ const listboxAppliancesBtn = document.getElementById("appliances-btn");
 const listboxUstensilsBtn = document.getElementById("ustensils-btn");
 
 // Build lists of seperate items
+//createListbox()
 const listboxAppliancesItems = getAppliances(recipes); ////////////
 listboxAppliancesItems.forEach((item) => {
   const elementList = document.createElement("li");
   elementList.textContent = item;
   listboxAppliancesList.append(elementList);
 });
-/* const listboxUstensilsItems = getUstensils(recipes); ////////////
-listboxUstensilsItems.forEach((item) => {
-  const elementList = document.createElement("li");
-  elementList.textContent = item;
-  listboxUstensilsList.append(elementList);
-}); */
+
+createListbox(recioes, getIngredients, listboxIngredientsList);
+createListbox(recioes, getIngredients, listboxIngredientsList);
+createListbox(marco, agr2, agr3); // idem
+createListbox(elena, agr2, agr3); // idem
 
 /* const listboxUstensilsItems = getUstensils(recipes); ////////////
 listboxUstensilsItems.forEach((item) => {
@@ -48,7 +48,12 @@ listboxUstensilsItems.forEach((item) => {
   listboxUstensilsList.append(elementList);
 }); */
 
-
+/* const listboxUstensilsItems = getUstensils(recipes); ////////////
+listboxUstensilsItems.forEach((item) => {
+  const elementList = document.createElement("li");
+  elementList.textContent = item;
+  listboxUstensilsList.append(elementList);
+}); */
 
 // EVENTS
 
@@ -63,8 +68,11 @@ listboxAppliancesBtn.addEventListener("click", (e) => {
   e.preventDefault();
   if (e.target.id == "appliances-btn") {
     displayAppliances(listboxAppliancesList);
+    /*  createListbox()
+    showListbox() */
   }
 });
+
 listboxUstensilsBtn.addEventListener("click", (e) => {
   e.preventDefault();
   if (e.target.id == "ustensils-btn") {
