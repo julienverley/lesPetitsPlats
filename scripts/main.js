@@ -9,7 +9,9 @@ import {
   createListboxsLists,
 } from "./factories/buildListboxs.js";
 import {
+  refreshTagList,
   addTags, 
+  removeTags,
 } from "./factories/buildTags.js"; 
 import { 
   recipes 

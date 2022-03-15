@@ -17,11 +17,11 @@ export const getIngredients = ($recipes) => {
         recipe.ingredients.forEach(object => allIngredients.push(object.ingredient)) 
     })
     const noDuplicatesIngredients = allIngredients.filter(noDuplicates)
-    const noDuplicateslowerCaseIngredients = noDuplicatesIngredients.toLowerCase()
+    //const noDuplicateslowerCaseIngredients = noDuplicatesIngredients.toLowerCase()
     
-    noDuplicateslowerCaseIngredients.sort((a, b) => a.localeCompare(b))
+    noDuplicatesIngredients.sort((a, b) => a.localeCompare(b))
     
-    return noDuplicateslowerCaseIngredients
+    return noDuplicatesIngredients
 
     ///  OK ///
     //const lowerCaseIngredients = noDuplicatesIngredients.toLowerCase()
