@@ -1,6 +1,6 @@
 
 // Show or hide listboxs 
-export const showListbox = ($listboxList) => {
+export const displayListbox = ($listboxList) => {
     $listboxList.classList.remove('hidden')
     //$listboxList.classList.add('show')
 

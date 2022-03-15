@@ -3,6 +3,12 @@
 const noDuplicates = ($value, $index, $self) => { 
     return $self.indexOf($value) === $index 
 }
+/* 
+// Lowercase
+const lowerCase = () => {
+
+}
+ */
 
 // Get items for listboxs
 export const getIngredients = ($recipes) => {
@@ -11,8 +17,15 @@ export const getIngredients = ($recipes) => {
         recipe.ingredients.forEach(object => allIngredients.push(object.ingredient)) 
     })
     const noDuplicatesIngredients = allIngredients.filter(noDuplicates)
-    noDuplicatesIngredients.sort((a, b) => a.localeCompare(b))
-    return noDuplicatesIngredients
+    const noDuplicateslowerCaseIngredients = noDuplicatesIngredients.toLowerCase()
+    
+    noDuplicateslowerCaseIngredients.sort((a, b) => a.localeCompare(b))
+    
+    return noDuplicateslowerCaseIngredients
+
+    ///  OK ///
+    //const lowerCaseIngredients = noDuplicatesIngredients.toLowerCase()
+    //return lowerCaseIngredients
 }
 export const getAppliances = ($recipes) => {
     const allAppliances = []
