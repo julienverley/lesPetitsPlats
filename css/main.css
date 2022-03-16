@@ -101,6 +101,11 @@ b {
 .hidden {
   display: none; }
 
+/* TAGS  */
+#tags {
+  font-size: 18px;
+  font-weight: 400; }
+
 /* Cards */
 .card-header {
   height: 150px;

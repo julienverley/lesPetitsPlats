@@ -16,9 +16,9 @@ import {
 import { 
   recipes 
 } from "./data/recipes.js";
+ 
 
-
-//let tags = [];
+let tags = [];
 // Listboxs lists nodes
 const listboxIngredientsList = document.getElementById("ingredients-list")
 const listboxAppliancesList = document.getElementById("appliances-list")
@@ -29,11 +29,11 @@ const listboxAppliancesBtn = document.getElementById("appliances-btn")
 const listboxUstensilsBtn = document.getElementById("ustensils-btn")
 
 // Create listboxs lists on load
-createListboxsLists(recipes, getIngredients, listboxIngredientsList);
-createListboxsLists(recipes, getAppliances, listboxAppliancesList);
-createListboxsLists(recipes, getUstensils, listboxUstensilsList);
+createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients");
+createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances"); 
+createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils"); 
 
-// Listboxs click events
+// Listboxs display click events
 listboxIngredientsBtn.addEventListener("click", (e) => {
   e.preventDefault();
   displayListbox(listboxIngredientsList);
@@ -53,13 +53,14 @@ listboxUstensilsBtn.addEventListener("click", (e) => {
   displayListbox(listboxUstensilsList);
 });
 
-// Listboxs items to build tags click events
+// Listboxs items to build tags, click events
 const ingredients = listboxIngredientsList.getElementsByTagName("li")
 for (var i = 0; i < ingredients.length; ++i) {
   ingredients[i].addEventListener('click', (e) => {
     const ingredient = e.target.textContent
-    console.log(ingredient);
-    addTags(ingredient)
+    console.log(ingredient) //
+    addTags(ingredient, tags) // array tags
+    console.log(tags);
     //...
   })
 }
@@ -67,9 +68,19 @@ const appliances = listboxAppliancesList.getElementsByTagName("li")
 for (var i = 0; i < appliances.length; ++i) {
   appliances[i].addEventListener('click', (e) => {
     const appliance = e.target.textContent
-    console.log(appliance);
-    addTags(appliance)
+    console.log(appliance) // 
+    addTags(appliance, tags) // array tags
+    //...
+  })
+}
+const ustensils = listboxUstensilsList.getElementsByTagName("li")
+for (var i = 0; i < ustensils.length; ++i) {
+  ustensils[i].addEventListener('click', (e) => {
+    const ustensil = e.target.textContent
+    console.log(ustensil) // 
+    addTags(ustensil, tags) // array tags
     //...
   })
 }
 
+// Tags, to remove click events

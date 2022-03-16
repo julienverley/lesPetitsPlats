@@ -3,12 +3,6 @@
 const noDuplicates = ($value, $index, $self) => { 
     return $self.indexOf($value) === $index 
 }
-/* 
-// Lowercase
-const lowerCase = () => {
-
-}
- */
 
 // Get items for listboxs
 export const getIngredients = ($recipes) => {
@@ -17,15 +11,8 @@ export const getIngredients = ($recipes) => {
         recipe.ingredients.forEach(object => allIngredients.push(object.ingredient)) 
     })
     const noDuplicatesIngredients = allIngredients.filter(noDuplicates)
-    //const noDuplicateslowerCaseIngredients = noDuplicatesIngredients.toLowerCase()
-    
     noDuplicatesIngredients.sort((a, b) => a.localeCompare(b))
-    
     return noDuplicatesIngredients
-
-    ///  OK ///
-    //const lowerCaseIngredients = noDuplicatesIngredients.toLowerCase()
-    //return lowerCaseIngredients
 }
 export const getAppliances = ($recipes) => {
     const allAppliances = []
@@ -45,14 +32,19 @@ export const getUstensils = ($recipes) => {
 }
 
 // Create listboxs lists 
-export const createListboxsLists = ($recipes, $functionGetTags, $elemListboxList) => { 
+export const createListboxsLists = ($recipes, $functionGetTags, $ElementlistboxList, $attribute) => { 
     const list = $functionGetTags($recipes)
     list.forEach(item => {
         const elementList = document.createElement('li')
-        elementList.textContent = item
-        $elemListboxList.append(elementList)        
+        elementList.textContent = item.toLowerCase()
+        elementList.setAttribute('data-type', $attribute) // CSS data-type 
+        // bouton X
+        $ElementlistboxList.append(elementList)        
     });
 }
 
+// toLowerCase function ? 
 
+/* if (item.toLowerCase() === input.toLowerCase()) {
 
+} */
