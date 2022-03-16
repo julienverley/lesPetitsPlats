@@ -1,4 +1,6 @@
 
+// const listboxControls = document.querySelector('.listbox-controls') // border-radius
+
 // Show or hide listboxs 
 export const displayListbox = ($listboxList) => {
     $listboxList.classList.remove('hidden')
@@ -6,8 +8,9 @@ export const displayListbox = ($listboxList) => {
 
 }
 export const hideListbox = ($listboxList) => {
-    //$listboxList.classList.remove('show')
     $listboxList.classList.add('hidden')
+    //$listboxList.classList.remove('show')
+    // listboxControls.style.borderRadius = "5px" // border-radius
 }
 /* 
 // Close dropdown if user clicks outside of it // ////////////////// fonction exportée ? 

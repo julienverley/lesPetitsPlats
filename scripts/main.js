@@ -18,7 +18,10 @@ import {
 } from "./data/recipes.js";
  
 
-let tags = [];
+let tags = []; // array with objects
+/* let tags = [[texte, ingredients], []]
+tag[0]
+tag[1] */
 // Listboxs lists nodes
 const listboxIngredientsList = document.getElementById("ingredients-list")
 const listboxAppliancesList = document.getElementById("appliances-list")
@@ -57,9 +60,13 @@ listboxUstensilsBtn.addEventListener("click", (e) => {
 const ingredients = listboxIngredientsList.getElementsByTagName("li")
 for (var i = 0; i < ingredients.length; ++i) {
   ingredients[i].addEventListener('click', (e) => {
+    console.log(e.target.dataset.type) //
+    const dataType = e.target.dataset.type
     const ingredient = e.target.textContent
-    console.log(ingredient) //
-    addTags(ingredient, tags) // array tags
+    const object = {name: ingredient, attribute: dataType} //(option objet)
+    //const array = [ingredient, dataType] (option array)
+    addTags(object, tags) // ingredient --> object (or array)
+    // addTags(ingredient, tags)
     console.log(tags);
     //...
   })
@@ -67,20 +74,30 @@ for (var i = 0; i < ingredients.length; ++i) {
 const appliances = listboxAppliancesList.getElementsByTagName("li")
 for (var i = 0; i < appliances.length; ++i) {
   appliances[i].addEventListener('click', (e) => {
+    const dataType = e.target.dataset.type
     const appliance = e.target.textContent
-    console.log(appliance) // 
-    addTags(appliance, tags) // array tags
-    //...
+    const object = {name: appliance, attribute: dataType}
+    addTags(object, tags) 
+    console.log(tags);
   })
 }
 const ustensils = listboxUstensilsList.getElementsByTagName("li")
 for (var i = 0; i < ustensils.length; ++i) {
   ustensils[i].addEventListener('click', (e) => {
+    const dataType = e.target.dataset.type
     const ustensil = e.target.textContent
-    console.log(ustensil) // 
-    addTags(ustensil, tags) // array tags
-    //...
+    const object = {name: ustensil, attribute: dataType}
+    addTags(object, tags) 
+    console.log(tags);
   })
 }
 
 // Tags, to remove click events
+
+/* const tagsList = document.getElementById('tags') // Antoine : comment rendre le tag cliquable ?
+console.log(tagsList)
+for (var i = 0; i < tagsList.length; ++i) {
+  tagsList[i].addEventListener('click', (e) => {
+    console.log('clickkkkKKK')
+  })
+} */

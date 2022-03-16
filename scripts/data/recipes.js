@@ -880,7 +880,7 @@ export const recipes = [
                 "unit": "grammes"
             },
             {
-                "ingredient": "Chocolat noir en pepites",
+                "ingredient": "Chocolat noir en pépites",
                 "quantity": 100,
                 "unit":"grammes"
             },

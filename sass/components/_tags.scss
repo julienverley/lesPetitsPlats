@@ -1,7 +1,33 @@
 /* TAGS  */
 
 #tags {
-    font-size: 18px;
+    display: flex;
+    //font-size: 18px;
     font-weight: 400;
-    
+}
+
+.tag {
+    display: flex;
+    border-radius: 5px;
+    color: white;
+    height: 37px;
+    min-width: 107px;
+    padding: 6px 2px 0 5px;
+    margin: 30px 5px 5px 0;
+}
+.tag div {
+    margin: 0 8px;
+}
+.bi-x-circle {
+    margin-right: 8px;
+} 
+
+div[data-type='ingredients'] {
+    background-color: $blue;
+}
+div[data-type='appliances'] {
+    background-color: $green;
+}
+div[data-type='ustensils'] {
+    background-color: $red;
 }

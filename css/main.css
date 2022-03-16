@@ -103,8 +103,32 @@ b {
 
 /* TAGS  */
 #tags {
-  font-size: 18px;
+  display: flex;
   font-weight: 400; }
+
+.tag {
+  display: flex;
+  border-radius: 5px;
+  color: white;
+  height: 37px;
+  min-width: 107px;
+  padding: 6px 2px 0 5px;
+  margin: 30px 5px 5px 0; }
+
+.tag div {
+  margin: 0 8px; }
+
+.bi-x-circle {
+  margin-right: 8px; }
+
+div[data-type='ingredients'] {
+  background-color: #3282F7; }
+
+div[data-type='appliances'] {
+  background-color: #68D9A4; }
+
+div[data-type='ustensils'] {
+  background-color: #ED6454; }
 
 /* Cards */
 .card-header {
