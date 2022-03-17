@@ -38,7 +38,6 @@ export const createListboxsLists = ($recipes, $functionGetTags, $ElementlistboxL
         const elementList = document.createElement('li')
         elementList.textContent = item.toLowerCase()
         elementList.setAttribute('data-type', $attribute) // CSS data-type 
-        // bouton X
         $ElementlistboxList.append(elementList)        
     });
 }
