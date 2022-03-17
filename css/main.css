@@ -108,10 +108,11 @@ b {
 
 .tag {
   display: flex;
+  justify-content: space-between;
   border-radius: 5px;
   color: white;
   height: 37px;
-  min-width: 107px;
+  min-width: 60px;
   padding: 6px 2px 0 5px;
   margin: 30px 5px 5px 0; }
 

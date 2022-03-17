@@ -25,10 +25,11 @@ export const refreshTagList = ($tags) => { // $tags le tableau du main passe en 
     }) 
 }
 
-// Antoine //////////// label = type, pour réintégrer le tag comme item dans le tableau 
+// A continuer //////////// label = type, pour réintégrer le tag comme item dans le tableau 
 export const removeTags = (tagLabel) => {
     tags = tags.filter(tag => tag.label !== tagLabel); 
 }
+////////////////////////// 
 
-///////// data-type, data-name, le parent ul a le data-type
+////////////////////////// data-type, data-name, le parent ul a le data-type
 
