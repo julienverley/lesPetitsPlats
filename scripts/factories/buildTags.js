@@ -5,7 +5,6 @@ export const addTags = (tag, $tags) => { // $tags le tableau du main passe en pa
     console.log(tag)
     $tags.push(tag)
     //tagsNode.textContent = tag //.classList.add("tag")
-    
     refreshTagList($tags); // $tags le tableau du main passe en paramètre 
 }
 
@@ -22,7 +21,7 @@ export const refreshTagList = ($tags) => { // $tags le tableau du main passe en 
 
         // 
         tagsNode.append(tagCard)
-    }) 
+    });
 }
 
 // A continuer //////////// label = type, pour réintégrer le tag comme item dans le tableau 

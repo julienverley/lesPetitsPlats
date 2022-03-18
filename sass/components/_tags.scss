@@ -23,12 +23,13 @@
     margin-right: 8px;
 } 
 
-div[data-type='ingredients'] {
+
+#tags div[data-type='ingredients'] {
     background-color: $blue;
 }
-div[data-type='appliances'] {
+#tags div[data-type='appliances'] {
     background-color: $green;
 }
-div[data-type='ustensils'] {
+#tags div[data-type='ustensils'] {
     background-color: $red;
 }
