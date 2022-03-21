@@ -19,9 +19,7 @@ import {
  
 
 let tags = []; // array with objects
-/* let tags = [[texte, ingredients], []]
-tag[0]
-tag[1] */
+
 // Listboxs lists nodes
 const listboxIngredientsList = document.getElementById("ingredients-list")
 const listboxAppliancesList = document.getElementById("appliances-list")
@@ -31,12 +29,8 @@ const listboxIngredientsBtn = document.getElementById("ingredients-btn")
 const listboxAppliancesBtn = document.getElementById("appliances-btn")
 const listboxUstensilsBtn = document.getElementById("ustensils-btn")
 
-// Antoine
 // Create listboxs lists on load
-// const ingredients = getIngredients();
-// const filteredIngredients = ingredients.filter()
-// createListboxsLists(recipes, filteredIngredients, listboxIngredientsList, "ingredients");
-createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags); // tags
+createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
 createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
 createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags); 
 
@@ -67,10 +61,9 @@ const handleTagClick = (listBoxElementList) => {
     element.addEventListener('click', (e) => {
       const dataType = e.target.dataset.type
       const name = e.target.textContent
-      const object = {name: name, attribute: dataType}
-
+      const object = {name: name, attribute: dataType} // Modèle 
       addTags(object, tags);
-      console.log(tags);
+      //console.log(tags);
       createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
       createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
       createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);
@@ -87,15 +80,16 @@ handleTagClick(listboxIngredientsList);
 handleTagClick(listboxAppliancesList);
 handleTagClick(listboxUstensilsList);
 
+
 // Tags, remove click events
 const handleRemoveTag = () => {
   const tagListHtml = document.querySelectorAll('#tags .tag');
   tagListHtml.forEach(tag => {
       tag.addEventListener('click', () => {
           const tagLabel = tag.getAttribute('data-name');
-          console.log(tags);
+          //console.log(tags);
           tags = tags.filter(tag => tag.name !== tagLabel);
-          console.log(tags);
+          // console.log(tags);
           refreshTagList(tags);
           handleRemoveTag();
           createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags); // Ajoutés
@@ -109,13 +103,49 @@ const handleRemoveTag = () => {
 }
 
 
+//////////////////////////////////////////////////////////////////
+// let itemsListboxs = []
+
+// Listboxs data 
+const handleFilterListboxs = (listboxElementList) => {
+  const elements = listboxElementList.querySelectorAll("li")
+  const elementsArray = Array.from(elements) // array of listbox elements (li)
+  const elementsArrayNames = elementsArray.map((item) => item.innerHTML) // array of listbox elements 
+  console.table(elementsArrayNames);
+
+    // Search inputs 
+    const listboxsInputs = document.querySelectorAll(".listbox-input")
+    listboxsInputs.forEach(listboxsInput => {
+      listboxsInput.addEventListener('keyup', (e) => { //
+        const searchString = e.target.value// OK search text 
+        console.log(e.target.value)
+
+        const filteredItemsListboxs = elementsArrayNames.filter((element) => { // filter seulement pour un array
+          return element.includes(searchString) // 
+          
+        })
+        console.log(filteredItemsListboxs);
+        
+        //handleTagClick(listboxIngredientsList);
+        //handleTagClick(listboxAppliancesList);
+        // handleTagClick(listboxUstensilsList);
+        //handleFilterListboxs()
+      })
+    })
+  }
+  handleFilterListboxs(listboxIngredientsList);
+  //handleFilterListboxs(listboxAppliancesList);
+  //handleFilterListboxs(listboxUstensilsList);
+  //////////////////////////////////////////////////////////////////
+ 
+  
 /*
 I. Filtrer la liste des ingrédients avec l'input
-1. Evenement sur l'input (keyUp de préférence, change)
-2. Filtrer le tableau d'ingrédients au complet => liste réduite
-3. Rafraîchir l'affichage
+1. Evenement sur l'input (keyUp de préférence, change) // OK
+2. Filtrer le tableau d'ingrédients au complet => liste réduite // A faire
+3. Rafraîchir l'affichage // A faire
 
-II. Filtrer la liste des ingrédients, ustensils et appliance en fonction des tags déjà ajoutés
+II. Filtrer la liste des ingrédients, ustensils et appliance en fonction des tags déjà ajoutés // OK
 
 III. search();
 1. Ajout d'un tag

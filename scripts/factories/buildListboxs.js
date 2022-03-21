@@ -32,22 +32,15 @@ export const getUstensils = ($recipes) => {
 }
 
 // Create listboxs lists 
-export const createListboxsLists = ($recipes, $functionGetTags, $ElementlistboxList, $attribute, $tags) => { 
-    const list = $functionGetTags($recipes);
-    $ElementlistboxList.innerHTML = '';
+export const createListboxsLists = ($dataRecipes, $functionGetTags, $listboxElementsList, $attribute, $tags) => { 
+    const list = $functionGetTags($dataRecipes);
+    $listboxElementsList.innerHTML = '';
     list.forEach(item => {
         const elementList = document.createElement('li')
         elementList.textContent = item.toLowerCase()
         elementList.setAttribute('data-type', $attribute) // CSS data-type 
-        // console.log($tags.find(tag => tag.name.toLowerCase() === item.toLowerCase()));
         if (!$tags.find(tag => tag.name.toLowerCase() === item.toLowerCase())) {
-            $ElementlistboxList.append(elementList);
+            $listboxElementsList.append(elementList);
         }     
     });
 }
-
-// toLowerCase function ? 
-
-/* if (item.toLowerCase() === input.toLowerCase()) {
-
-} */

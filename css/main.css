@@ -122,13 +122,13 @@ b {
 .bi-x-circle {
   margin-right: 8px; }
 
-#tags div[data-type='ingredients'] {
+#tags div[data-type="ingredients"] {
   background-color: #3282F7; }
 
-#tags div[data-type='appliances'] {
+#tags div[data-type="appliances"] {
   background-color: #68D9A4; }
 
-#tags div[data-type='ustensils'] {
+#tags div[data-type="ustensils"] {
   background-color: #ED6454; }
 
 /* Cards */
@@ -154,12 +154,9 @@ b {
 /* Search */
 .search-field {
   display: flex;
-  justify-content: space-between;
-  border-radius: 5px;
-  background-color: #E7E7E7; }
+  justify-content: space-between; }
 
 .search-field input {
   border: none;
   width: 70em;
-  outline: none;
-  background-color: #E7E7E7; }
+  outline: none; }

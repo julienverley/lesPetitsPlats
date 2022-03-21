@@ -3,12 +3,9 @@
 .search-field {
     display: flex;
     justify-content: space-between;
-    border-radius: $radius;
-    background-color: $lightgrey;
 }
 .search-field input {
     border: none; 
     width: 70em;
     outline: none;
-    background-color: $lightgrey;
 }

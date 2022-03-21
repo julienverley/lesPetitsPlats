@@ -5,6 +5,7 @@ export const addTags = (tag, $tags) => { // $tags le tableau du main passe en pa
     console.log(tag)
     $tags.push(tag)
     //tagsNode.textContent = tag //.classList.add("tag")
+    
     refreshTagList($tags); // $tags le tableau du main passe en paramètre 
 }
 
@@ -24,11 +25,6 @@ export const refreshTagList = ($tags) => { // $tags le tableau du main passe en 
     });
 }
 
-// A continuer //////////// label = type, pour réintégrer le tag comme item dans le tableau 
 export const removeTags = (tagLabel) => {
     tags = tags.filter(tag => tag.label !== tagLabel); 
 }
-////////////////////////// 
-
-////////////////////////// data-type, data-name, le parent ul a le data-type
-
