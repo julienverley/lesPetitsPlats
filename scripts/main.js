@@ -75,11 +75,9 @@ const handleTagClick = (listBoxElementList) => {
     });
   });
 };
-
 handleTagClick(listboxIngredientsList);
 handleTagClick(listboxAppliancesList);
 handleTagClick(listboxUstensilsList);
-
 
 // Tags, remove click events
 const handleRemoveTag = () => {
@@ -102,53 +100,52 @@ const handleRemoveTag = () => {
   })
 }
 
-
 //////////////////////////////////////////////////////////////////
-// let itemsListboxs = []
-
 // Listboxs data 
-const handleFilterListboxs = (listboxElementList) => {
+const handleFilterListboxs = (listboxElementList, $listboxInput) => {
   const elements = listboxElementList.querySelectorAll("li")
-  const elementsArray = Array.from(elements) // array of listbox elements (li)
-  const elementsArrayNames = elementsArray.map((item) => item.innerHTML) // array of listbox elements 
-  console.table(elementsArrayNames);
+  const elementsArray = Array.from(elements) // OK array of listbox elements (li)
+  const elementsArrayNames = elementsArray.map((item) => item.innerHTML) // OK array of listbox elements 
+  const elementsArrayDataType = elementsArray.map((item) => item.dataset.type) // OK array of listbox elements 
+  // 1/ Créer un tableau d'objets avec name et type // cf. modèle plus haut
+  const object = {name: elementsArrayNames, attribute: elementsArrayDataType}
+  console.log(object) // OK
+  //console.log(elementsArrayNames); //
+  //console.log(elementsArrayDataType); //
 
     // Search inputs 
-    const listboxsInputs = document.querySelectorAll(".listbox-input")
-    listboxsInputs.forEach(listboxsInput => {
-      listboxsInput.addEventListener('keyup', (e) => { //
+    const listboxsInputs = document.querySelector($listboxInput) // paramètre ? 
+    //listboxsInputs.forEach(listboxsInput => {
+      listboxsInputs.addEventListener('keyup', (e) => { //
         const searchString = e.target.value// OK search text 
-        console.log(e.target.value)
-
-        const filteredItemsListboxs = elementsArrayNames.filter((element) => { // filter seulement pour un array
-          return element.includes(searchString) // 
-          
+        const filteredItemsListboxs = object.name.filter((element) => { 
+          // 2/ passer l'array avec name et type, donc passer le nouveau tableau d'objet // probleme, filter ne traite que des tableaux (pas des objets)
+          return element.includes(searchString) // ...
+          // 3/ return element.name.includes(searchString)
         })
-        console.log(filteredItemsListboxs);
-        
-        //handleTagClick(listboxIngredientsList);
-        //handleTagClick(listboxAppliancesList);
-        // handleTagClick(listboxUstensilsList);
-        //handleFilterListboxs()
+        console.log(filteredItemsListboxs); // OK chaque array filtered
+        listboxIngredientsList.innerHTML = ""
+        // 4/ Recréer le modèle de createListboxsLists, sauf $dataRecipes qui sera filteredItemsListboxs
+        createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags); // Pb avec recipes, bloque au forEach de getIngredients
       })
-    })
+    //})
   }
-  handleFilterListboxs(listboxIngredientsList);
-  //handleFilterListboxs(listboxAppliancesList);
-  //handleFilterListboxs(listboxUstensilsList);
-  //////////////////////////////////////////////////////////////////
+  handleFilterListboxs(listboxIngredientsList, "#ingredients-input");
+  handleFilterListboxs(listboxAppliancesList, "#appliances-input");
+  handleFilterListboxs(listboxUstensilsList, "#ustensils-input");
+//////////////////////////////////////////////////////////////////
  
   
 /*
 I. Filtrer la liste des ingrédients avec l'input
 1. Evenement sur l'input (keyUp de préférence, change) // OK
-2. Filtrer le tableau d'ingrédients au complet => liste réduite // A faire
+2. Filtrer le tableau d'ingrédients au complet => liste réduite // OK (console.log) A finir 
 3. Rafraîchir l'affichage // A faire
 
 II. Filtrer la liste des ingrédients, ustensils et appliance en fonction des tags déjà ajoutés // OK
 
 III. search();
-1. Ajout d'un tag
+1. Ajout d'un tag 
 2. Suppression d'un tag
 3. Caractères écrit dans le champs principal
 

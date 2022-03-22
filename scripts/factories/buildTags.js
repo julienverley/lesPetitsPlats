@@ -19,8 +19,6 @@ export const refreshTagList = ($tags) => { // $tags le tableau du main passe en 
         tagCard.classList.add('tag')
         tagCard.setAttribute('data-type', `${tag.attribute}`)
         tagCard.setAttribute('data-name', `${tag.name}`) 
-
-        // 
         tagsNode.append(tagCard)
     });
 }
