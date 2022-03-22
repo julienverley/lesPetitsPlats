@@ -7,6 +7,7 @@ import {
   getAppliances,
   getUstensils,
   createListboxsLists,
+  refreshListboxsLists,
 } from "./factories/buildListboxs.js";
 import {
   refreshTagList,
@@ -105,6 +106,7 @@ const handleRemoveTag = () => {
 const handleFilterListboxs = (listboxElementList, $listboxInput) => {
   const elements = listboxElementList.querySelectorAll("li")
   const elementsArray = Array.from(elements) // OK array of listbox elements (li)
+  console.log("ElementsArray: ", elementsArray);
   const elementsArrayNames = elementsArray.map((item) => item.innerHTML) // OK array of listbox elements 
   const elementsArrayDataType = elementsArray.map((item) => item.dataset.type) // OK array of listbox elements 
   // 1/ Créer un tableau d'objets avec name et type // cf. modèle plus haut
@@ -118,15 +120,16 @@ const handleFilterListboxs = (listboxElementList, $listboxInput) => {
     //listboxsInputs.forEach(listboxsInput => {
       listboxsInputs.addEventListener('keyup', (e) => { //
         const searchString = e.target.value// OK search text 
-        const filteredItemsListboxs = object.name.filter((element) => { 
+        const filteredItemsListboxs = elementsArray.filter((element) => { 
           // 2/ passer l'array avec name et type, donc passer le nouveau tableau d'objet // probleme, filter ne traite que des tableaux (pas des objets)
-          return element.includes(searchString) // ...
+          return element.innerHTML.includes(searchString) // ...
           // 3/ return element.name.includes(searchString)
         })
-        console.log(filteredItemsListboxs); // OK chaque array filtered
-        listboxIngredientsList.innerHTML = ""
+        console.log("Tableau filtré: ",filteredItemsListboxs); // OK chaque array filtered
+        listboxElementList.innerHTML = ""
         // 4/ Recréer le modèle de createListboxsLists, sauf $dataRecipes qui sera filteredItemsListboxs
-        createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags); // Pb avec recipes, bloque au forEach de getIngredients
+        //createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags); // Pb avec recipes, bloque au forEach de getIngredients
+        refreshListboxsLists(filteredItemsListboxs, listboxElementList, tags); // Pb avec recipes, bloque au forEach de getIngredients
       })
     //})
   }
