@@ -2,7 +2,6 @@
 
 #tags {
   display: flex;
-  //font-size: 18px;
   font-weight: 400;
 }
 
@@ -21,6 +20,7 @@
 }
 .bi-x-circle {
   margin-right: 8px;
+  cursor: pointer;   
 }
 
 #tags div[data-type="ingredients"] {

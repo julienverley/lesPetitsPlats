@@ -12,7 +12,7 @@ import {
 import {
   refreshTagList,
   addTags, 
-  removeTags,
+  removeTags, // 
 } from "./factories/buildTags.js"; 
 import { 
   recipes 
@@ -57,22 +57,20 @@ listboxUstensilsBtn.addEventListener("click", (e) => {
 
 // Tags, add click events
 const handleTagClick = (listBoxElementList) => {
-  const elements = listBoxElementList.querySelectorAll("li")
+  const elements = listBoxElementList.querySelectorAll("li") // ? cf. l 70
   elements.forEach(element => {
     element.addEventListener('click', (e) => {
       const dataType = e.target.dataset.type
       const name = e.target.textContent
       const object = {name: name, attribute: dataType} // Modèle 
       addTags(object, tags);
-      //console.log(tags);
       createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
       createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
       createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);
-      handleTagClick(listboxIngredientsList);
+      handleTagClick(listboxIngredientsList); // listBoxElementList
       handleTagClick(listboxAppliancesList);
       handleTagClick(listboxUstensilsList);
       handleRemoveTag();
-      //...
     });
   });
 };
@@ -86,13 +84,11 @@ const handleRemoveTag = () => {
   tagListHtml.forEach(tag => {
       tag.addEventListener('click', () => {
           const tagLabel = tag.getAttribute('data-name');
-          //console.log(tags);
           tags = tags.filter(tag => tag.name !== tagLabel);
-          // console.log(tags);
           refreshTagList(tags);
           handleRemoveTag();
-          createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags); // Ajoutés
-          createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); // ... 
+          createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags); 
+          createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags);  
           createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);
           handleTagClick(listboxIngredientsList); 
           handleTagClick(listboxAppliancesList);
@@ -101,56 +97,42 @@ const handleRemoveTag = () => {
   })
 }
 
-//////////////////////////////////////////////////////////////////
-// Listboxs data 
-const handleFilterListboxs = (listboxElementList, $listboxInput) => {
+// Listboxs list, input search events 
+const handleFilterListboxs = (listboxElementList, $listboxInput) => { // ? $listboxInput cf. line 117
   const elements = listboxElementList.querySelectorAll("li")
   const elementsArray = Array.from(elements) // OK array of listbox elements (li)
-  console.log("ElementsArray: ", elementsArray);
-  const elementsArrayNames = elementsArray.map((item) => item.innerHTML) // OK array of listbox elements 
-  const elementsArrayDataType = elementsArray.map((item) => item.dataset.type) // OK array of listbox elements 
-  // 1/ Créer un tableau d'objets avec name et type // cf. modèle plus haut
-  const object = {name: elementsArrayNames, attribute: elementsArrayDataType}
-  console.log(object) // OK
-  //console.log(elementsArrayNames); //
-  //console.log(elementsArrayDataType); //
 
-    // Search inputs 
-    const listboxsInputs = document.querySelector($listboxInput) // paramètre ? 
-    //listboxsInputs.forEach(listboxsInput => {
-      listboxsInputs.addEventListener('keyup', (e) => { //
-        const searchString = e.target.value// OK search text 
-        const filteredItemsListboxs = elementsArray.filter((element) => { 
-          // 2/ passer l'array avec name et type, donc passer le nouveau tableau d'objet // probleme, filter ne traite que des tableaux (pas des objets)
-          return element.innerHTML.includes(searchString) // ...
-          // 3/ return element.name.includes(searchString)
-        })
-        console.log("Tableau filtré: ",filteredItemsListboxs); // OK chaque array filtered
-        listboxElementList.innerHTML = ""
-        // 4/ Recréer le modèle de createListboxsLists, sauf $dataRecipes qui sera filteredItemsListboxs
-        //createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags); // Pb avec recipes, bloque au forEach de getIngredients
-        refreshListboxsLists(filteredItemsListboxs, listboxElementList, tags); // Pb avec recipes, bloque au forEach de getIngredients
+  // Search inputs 
+  const listboxsInputs = document.querySelector($listboxInput)
+    listboxsInputs.addEventListener('keyup', (e) => { 
+      const searchString = e.target.value// OK search text 
+      const filteredItemsListboxs = elementsArray.filter((element) => { // filter, with array
+        return element.innerHTML.includes(searchString)
       })
-    //})
+      //console.log("Tableau filtré: ",filteredItemsListboxs); // OK chaque array filtered
+      listboxElementList.innerHTML = ""
+      refreshListboxsLists(filteredItemsListboxs, listboxElementList, tags);
+    })
   }
-  handleFilterListboxs(listboxIngredientsList, "#ingredients-input");
+  handleFilterListboxs(listboxIngredientsList, "#ingredients-input"); // $listboxInput
   handleFilterListboxs(listboxAppliancesList, "#appliances-input");
   handleFilterListboxs(listboxUstensilsList, "#ustensils-input");
-//////////////////////////////////////////////////////////////////
- 
+
+  
   
 /*
 I. Filtrer la liste des ingrédients avec l'input
 1. Evenement sur l'input (keyUp de préférence, change) // OK
-2. Filtrer le tableau d'ingrédients au complet => liste réduite // OK (console.log) A finir 
-3. Rafraîchir l'affichage // A faire
+2. Filtrer le tableau d'ingrédients au complet => liste réduite // OK
+3. Rafraîchir l'affichage // OK
+4. Recherches input avec màj des tags
 
 II. Filtrer la liste des ingrédients, ustensils et appliance en fonction des tags déjà ajoutés // OK
 
 III. search();
 1. Ajout d'un tag 
 2. Suppression d'un tag
-3. Caractères écrit dans le champs principal
+3. Caractères écrits dans le champs principal
 
 IV. Filtrer les ingrédients, ustensils et appliance en fonction des recettes restantes dans les résultats.
 
