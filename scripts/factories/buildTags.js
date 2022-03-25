@@ -5,6 +5,10 @@ const tagsNode = document.getElementById('tags')
 export const addTags = (tag, $tags) => { // $tags le tableau du main passe en paramètre // parameter tag --> object
     $tags.push(tag)
     refreshTagList($tags); // $tags le tableau du main passe en paramètre 
+    document.getElementById("ingredients-input").value = "";
+    document.getElementById("appliances-input").value = ""; 
+    document.getElementById("ustensils-input").value = ""; 
+
 }
 // Refresh list of tag(s)
 export const refreshTagList = ($tags) => { // $tags le tableau du main passe en paramètre 

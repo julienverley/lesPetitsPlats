@@ -48,7 +48,8 @@ export const createListboxsLists = ($recipes, $functionGetItems, $listboxElement
 // Refresh listboxs lists on input searchs
 export const refreshListboxsLists = ($filteredItemsListboxs, $listboxElementsList, $tags) => {
     $filteredItemsListboxs.forEach(filteredItemListbox => {
-        if (!$tags.find(tag => tag.name.toLowerCase() === item.toLowerCase())) { // Revoir tag / item
+        console.log(filteredItemListbox);
+        if (!$tags.find(tag => tag.name.toLowerCase() === filteredItemListbox.innerText.toLowerCase())) { 
             $listboxElementsList.append(filteredItemListbox);
         }     
     })

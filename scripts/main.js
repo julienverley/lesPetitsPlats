@@ -20,6 +20,14 @@ import {
  
 
 let tags = []; // array with objects // console.log ? 
+let search = "";
+
+/* 
+searchInput.addEventListener('keyUp', (e) => {
+  search = e.target.value;
+  search();
+});
+*/
 
 // Listboxs lists nodes
 const listboxIngredientsList = document.getElementById("ingredients-list")
@@ -34,6 +42,7 @@ const listboxUstensilsBtn = document.getElementById("ustensils-btn")
 createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
 createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
 createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags); 
+
 
 // Listboxs display button click events
 listboxIngredientsBtn.addEventListener("click", (e) => {
@@ -56,10 +65,10 @@ listboxUstensilsBtn.addEventListener("click", (e) => {
 });
 
 // Tags, add click events
-const handleTagClick = (listBoxElementList) => {
-  const elements = listBoxElementList.querySelectorAll("li") 
+const handleTagClick = (listboxElementList) => { 
+  const elements = listboxElementList.querySelectorAll("li") 
   elements.forEach(element => {
-    element.addEventListener('click', (e) => {
+    element.addEventListener('click', (e) => { /////////// Problème après ce click /////////////
       const dataType = e.target.dataset.type
       const name = e.target.textContent
       const object = {name: name, attribute: dataType} 
@@ -70,11 +79,14 @@ const handleTagClick = (listBoxElementList) => {
       handleTagClick(listboxIngredientsList); 
       handleTagClick(listboxAppliancesList);
       handleTagClick(listboxUstensilsList);
+      //refreshListboxsLists(filteredItemsListboxs, listboxElementList, tags); //
       handleRemoveTag();
+
+      // function search
     });
   });
 };
-handleTagClick(listboxIngredientsList); // Pourquoi ? 
+handleTagClick(listboxIngredientsList); // addEventlistener à l'écoute en global 
 handleTagClick(listboxAppliancesList);
 handleTagClick(listboxUstensilsList);
 
@@ -93,6 +105,7 @@ const handleRemoveTag = () => {
           handleTagClick(listboxUstensilsList);
           refreshTagList(tags);
           handleRemoveTag();
+          // function search
       });
   })
 }
@@ -100,15 +113,14 @@ const handleRemoveTag = () => {
 // Listboxs list, input search events 
 const handleFilterListboxs = (listboxElementList, $listboxInput) => { 
   const elements = listboxElementList.querySelectorAll("li")
-  const elementsArray = Array.from(elements) 
-
+  const elementsArray = Array.from(elements);
   // Search inputs 
   const listboxsInputs = document.querySelector($listboxInput)
-    listboxsInputs.addEventListener('keyup', (e) => { 
-      const searchString = e.target.value
+    listboxsInputs.addEventListener('keyup', (e) => {
+      const searchString = e.target.value;
       const filteredItemsListboxs = elementsArray.filter((element) => { 
         return element.innerHTML.includes(searchString)
-      })
+      });
       listboxElementList.innerHTML = ""
       refreshListboxsLists(filteredItemsListboxs, listboxElementList, tags);
     })
@@ -116,8 +128,10 @@ const handleFilterListboxs = (listboxElementList, $listboxInput) => {
   handleFilterListboxs(listboxIngredientsList, "#ingredients-input"); 
   handleFilterListboxs(listboxAppliancesList, "#appliances-input");
   handleFilterListboxs(listboxUstensilsList, "#ustensils-input");
+  // Problème : après listbox input search puis tag click, listbox revient au complet  
 
-  
+
+
   
 /*
 I. Filtrer la liste des ingrédients avec l'input
@@ -125,12 +139,14 @@ I. Filtrer la liste des ingrédients avec l'input
 2. Filtrer le tableau d'ingrédients au complet => liste réduite // OK
 3. Rafraîchir l'affichage // OK
 
-II. Filtrer la liste des ingrédients, ustensils et appliance en fonction des tags déjà ajoutés // 
+II. Filtrer la liste des ingrédients, ustensils et appliance en fonction des tags déjà ajoutés // OK mais 
 
-III. search();
+III. search($tags, $search);
 1. Ajout d'un tag // ?
 2. Suppression d'un tag
 3. Caractères écrits dans le champs principal
+
+// []
 
 IV. Filtrer les ingrédients, ustensils et appliance en fonction des recettes restantes dans les résultats.
 
