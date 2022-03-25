@@ -12,7 +12,7 @@ export const getIngredients = ($recipes) => {
     })
     const noDuplicatesIngredients = allIngredients.filter(noDuplicates)
     noDuplicatesIngredients.sort((a, b) => a.localeCompare(b))
-    return noDuplicatesIngredients
+    return noDuplicatesIngredients // liste d'ingrédients triés non dupliqués 
 }
 export const getAppliances = ($recipes) => {
     const allAppliances = []
@@ -32,15 +32,15 @@ export const getUstensils = ($recipes) => {
 }
 
 // Create listboxs lists 
-export const createListboxsLists = ($dataRecipes, $functionGetTags, $listboxElementsList, $attribute, $tags) => { 
-    const list = $functionGetTags($dataRecipes);
+export const createListboxsLists = ($recipes, $functionGetItems, $listboxElementsList, $attribute, $tags) => { 
+    const items = $functionGetItems($recipes);
     $listboxElementsList.innerHTML = '';
-    list.forEach(item => {
+    items.forEach(item => {
         const elementList = document.createElement('li')
         elementList.textContent = item.toLowerCase()
         elementList.setAttribute('data-type', $attribute) // CSS data-type 
-        if (!$tags.find(tag => tag.name.toLowerCase() === item.toLowerCase())) {
-            $listboxElementsList.append(elementList);
+        if (!$tags.find(tag => tag.name.toLowerCase() === item.toLowerCase())) { // if item ≠ tag... 
+            $listboxElementsList.append(elementList); // ... append each item in listboxList
         }     
     });
 }
@@ -48,7 +48,7 @@ export const createListboxsLists = ($dataRecipes, $functionGetTags, $listboxElem
 // Refresh listboxs lists on input searchs
 export const refreshListboxsLists = ($filteredItemsListboxs, $listboxElementsList, $tags) => {
     $filteredItemsListboxs.forEach(filteredItemListbox => {
-        if (!$tags.find(tag => tag.name.toLowerCase() === item.toLowerCase())) { // tag / item
+        if (!$tags.find(tag => tag.name.toLowerCase() === item.toLowerCase())) { // Revoir tag / item
             $listboxElementsList.append(filteredItemListbox);
         }     
     })

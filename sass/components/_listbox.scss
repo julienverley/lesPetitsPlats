@@ -6,15 +6,15 @@
 
 .listbox {
     margin: 20px 20px 0 0;
-    border-radius: 5px;
+    border-radius: $radius;
     overflow: hidden;
     min-width: 170px;
 }
 
 .listbox-controls {
     display: flex;
-    justify-content: space-between;    
-    border-radius: $radius $radius 0 0;
+    justify-content: space-between;
+    border-radius: $radius; // 
 }
 
 .listbox-btn {
@@ -64,6 +64,7 @@
     color: white;
     font-size: 18px;
     padding: 20px;
+    margin-top: -7px; // 
     border-radius: 0 0 $radius $radius;
     overflow-y: scroll;
     scrollbar-color: rgba(255, 255, 255, 0.5) rgba(255, 255, 255, .1);
@@ -102,4 +103,8 @@
 
 .hidden {
     display: none;
+}
+
+.show {
+    border-radius: $radius;
 }

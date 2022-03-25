@@ -2,14 +2,14 @@
 // const listboxControls = document.querySelector('.listbox-controls') // border-radius
 
 // Show or hide listboxs 
-export const displayListbox = ($listboxList) => {
+export const displayListbox = ($listboxList) => { // changer dynamiquement le placeholder par "Rechercher un { }" (dataset)
     $listboxList.classList.remove('hidden')
-    //$listboxList.classList.add('show')
-
+    $listboxList.classList.add('show')
+    //document.getElementById('')...
 }
 export const hideListbox = ($listboxList) => {
     $listboxList.classList.add('hidden')
-    //$listboxList.classList.remove('show')
+    $listboxList.classList.remove('show')
     // listboxControls.style.borderRadius = "5px" // border-radius
 }
 /* 

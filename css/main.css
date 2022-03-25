@@ -5,6 +5,14 @@
 /* Imports of .scss files  */
 /* Colors */
 /* Border-radius */
+/* BASE  */
+/* Header */
+.logo-vector {
+  text-align: center; }
+
+.logo-text {
+  text-align: center; }
+
 /* TYPO */
 * {
   font-family: Lato, sans-serif;
@@ -26,7 +34,7 @@ b {
 .listbox-controls {
   display: flex;
   justify-content: space-between;
-  border-radius: 5px 5px 0 0; }
+  border-radius: 5px; }
 
 .listbox-btn {
   padding-right: 15px;
@@ -71,6 +79,7 @@ b {
   color: white;
   font-size: 18px;
   padding: 20px;
+  margin-top: -7px;
   border-radius: 0 0 5px 5px;
   overflow-y: scroll;
   scrollbar-color: rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0.1);
@@ -100,6 +109,9 @@ b {
 
 .hidden {
   display: none; }
+
+.show {
+  border-radius: 5px; }
 
 /* TAGS  */
 #tags {
