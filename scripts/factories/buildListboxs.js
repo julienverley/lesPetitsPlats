@@ -8,7 +8,7 @@ const noDuplicates = ($value, $index, $self) => {
 export const getIngredients = ($recipes) => {
     const allIngredients = []
     $recipes.forEach(recipe => { // ça bloque pour filteredItemsListboxs qui renvoie un tableau
-        recipe.ingredients.forEach(object => allIngredients.push(object.ingredient)) 
+        recipe.ingredients.forEach(object => allIngredients.push(object.ingredient))
     })
     const noDuplicatesIngredients = allIngredients.filter(noDuplicates)
     noDuplicatesIngredients.sort((a, b) => a.localeCompare(b))
