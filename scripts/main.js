@@ -14,18 +14,16 @@ import {
   addTags, 
   removeTags, // 
 } from "./factories/buildTags.js"; 
-/* 
 import {
   search, 
 } from "./factories/search.js"
- */
 import { 
   recipes // array with recipes 
 } from "./data/recipes.js";
  
 
 let tags = []; // array with objects
-let search = ""; // ? 
+// let searchInput = ""; // utilisée plus tard avec f° getRecipesBySearchInput
 
 // Listboxs lists nodes
 const listboxIngredientsList = document.getElementById("ingredients-list")
@@ -109,7 +107,7 @@ const handleTagClick = (listboxElementList) => {
       const name = e.target.textContent
       const object = {name: name, attribute: dataType} 
       addTags(object, tags);
-      createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
+      createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags); // model pour search(recipes, tags, searchInput )
       createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
       createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);
       handleTagClick(listboxIngredientsList); 
@@ -117,7 +115,7 @@ const handleTagClick = (listboxElementList) => {
       handleTagClick(listboxUstensilsList);
       handleRemoveTag();
       
-      // search() // (tags, searchInput) /////////
+      search(recipes, tags) // 3e argument $searchInput pour f° getRecipesBySearchInput
     });
   });
 };
@@ -132,7 +130,7 @@ const handleRemoveTag = () => {
       tag.addEventListener('click', () => {
           const tagLabel = tag.getAttribute('data-name');
           tags = tags.filter(tag => tag.name !== tagLabel);
-          createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags); 
+          createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags); // model 
           createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags);  
           createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);
           handleTagClick(listboxIngredientsList); 
@@ -140,8 +138,9 @@ const handleRemoveTag = () => {
           handleTagClick(listboxUstensilsList);
           refreshTagList(tags);
           handleRemoveTag();
-          // function search
-      });
+
+          search(recipes, tags) // 3e argument $searchInput pour f° getRecipesBySearchInput
+        });
   })
 }
 
