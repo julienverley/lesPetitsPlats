@@ -14,34 +14,55 @@ export const search = ($recipes, $tags) => { // 3e argument $searchInput pour f�
 };
 
 const getRecipesByTags = ($recipes, $tags) => {
-   console.log("Search déclenché")
-
-    // nous renvoyer une liste de recette qui ont les tags sélectionnés
-    if ($tags.length === 0) {
+   // nous renvoyer une liste de recette qui ont les tags sélectionnés
+   // console.log("Search déclenché")
+   console.table($tags); // OK [tag(s) sélectionné(s)]
+ 
+    if ($tags.length === 0) { // OK 
         return $recipes;
     }
 
     const newRecipes = [];
     $recipes.forEach(recipe => {
-        console.log(recipe.ingredients);
+        // console.log(recipe); // OK chaque recette // Sauf... seulement un recipe.appliance
         let containsTags = true;
         
-        /* 
+        
+        //let recipeAppliance = recipe.map(element => element.appliance) // problème ici 
+        //console.log(recipeAppliance);
+
+
         $tags.forEach(tag => { // si tag.attribute (pex appliance), alors recherche dans appliance, si ingredients, chercher dans ingredients etc. // { donc ? pex tag.attribute (appliance) présent dans recipes.appliance ? etc. 
             // si le tag n'est pas dans la recette "recipe" => containsTags = false;
-            /////
+            //console.log(tag.attribute); // OK attribute du tag (string)
+            
 
-        })
+
+            if (tag.attribute === "appliances") { 
+                let tagApplianceName = tag.name
+                console.log(tagApplianceName);
+                console.log(recipe.appliance); // OK tous les appliances des 50 recipes
+                console.log($recipes.filter((recipe) => recipe.appliance.toLowerCase() === tagApplianceName.toLowerCase())); // OK array avec les recettes filtrées avec les tags
+
+
+            } else {
+                console.log("C'est autre chose que appliances");
+            }
+
+        }) 
+
+
+/* 
         if (containsTags === true) {
             newRecipes.push(recipe);
         }
-
- */    });
+ */
+    });
     return newRecipes; // []
 
 };
 
-
+// CF. YT JavaScript Search Bar Harry Potter
 const getRecipesBySearchInput = ($recipes, $search) => {
     // document.querySelector('#searchInput').value
     const newRecipes = []; // 2è [], à return à la fin 

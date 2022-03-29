@@ -31,6 +31,7 @@ export const getUstensils = ($recipes) => {
     return noDuplicatesUstensils
 }
 
+
 // Create listboxs lists 
 export const createListboxsLists = ($recipes, $functionGetItems, $listboxElementsList, $attribute, $tags) => { 
     const items = $functionGetItems($recipes);
@@ -48,7 +49,7 @@ export const createListboxsLists = ($recipes, $functionGetItems, $listboxElement
 // Refresh listboxs lists on input searchs
 export const refreshListboxsLists = ($filteredItemsListboxs, $listboxElementsList, $tags) => {
     $filteredItemsListboxs.forEach(filteredItemListbox => {
-        console.log(filteredItemListbox);
+        //console.log(filteredItemListbox);
         if (!$tags.find(tag => tag.name.toLowerCase() === filteredItemListbox.innerText.toLowerCase())) { 
             $listboxElementsList.append(filteredItemListbox);
         }     
