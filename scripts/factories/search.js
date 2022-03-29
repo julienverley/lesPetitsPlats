@@ -23,7 +23,7 @@ const getRecipesByTags = ($recipes, $tags) => {
     }
 
     const newRecipes = [];
-    $recipes.forEach(recipe => {
+    //$recipes.forEach(recipe => {
         // console.log(recipe); // OK chaque recette // Sauf... seulement un recipe.appliance
         let containsTags = true;
         
@@ -40,15 +40,17 @@ const getRecipesByTags = ($recipes, $tags) => {
 
             if (tag.attribute === "appliances") { 
                 let tagApplianceName = tag.name
-                console.log(tagApplianceName);
-                console.log(recipe.appliance); // OK tous les appliances des 50 recipes
-                console.log($recipes.filter((recipe) => recipe.appliance.toLowerCase() === tagApplianceName.toLowerCase())); // OK array avec les recettes filtrées avec les tags
+                //console.log(tagApplianceName);
+                //console.log(recipe.appliance); // OK tous les appliances des 50 recipes
+                console.log($recipes.filter((recipe) => recipe.appliance.toLowerCase() === tagApplianceName.toLowerCase()));     // OK array avec les recettes filtrées avec les tags
+                newRecipes.push($recipes.filter((recipe) => recipe.appliance.toLowerCase() === tagApplianceName.toLowerCase()))
 
 
             } else {
                 console.log("C'est autre chose que appliances");
             }
 
+            //if (tag.attribute === "appliances") newRecipes.push($recipes.filter((recipe) => recipe.appliance.toLowerCase() === tag.name.toLowerCase()))
         }) 
 
 
@@ -57,7 +59,7 @@ const getRecipesByTags = ($recipes, $tags) => {
             newRecipes.push(recipe);
         }
  */
-    });
+    //});
     return newRecipes; // []
 
 };
