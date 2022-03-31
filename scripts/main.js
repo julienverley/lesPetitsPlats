@@ -144,6 +144,12 @@ const handleRemoveTag = () => {
   })
 }
 
+// Input search keyup event 
+document.querySelector("#search-input").addEventListener("keyup", (e) => {
+  const searchTextInput = e.target.value
+    search(recipes, tags, searchTextInput)
+});
+
 // Listboxs list, input search events 
 const handleFilterListboxs = (listboxElementList, $listboxInput) => { 
   const elements = listboxElementList.querySelectorAll("li")
