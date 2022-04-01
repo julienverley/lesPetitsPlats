@@ -42,7 +42,7 @@ const listboxIngredientsInput = document.getElementById("ingredients-input")
 const listboxAppliancesInput = document.getElementById("appliances-input")
 const listboxUstensilsInput = document.getElementById("ustensils-input")
 // Main search input node
-const searchInput = document.getElementById("search-input") 
+const searchInput = document.getElementById("search-input").value //////// .value en plus 
 
 
 /* 
@@ -115,7 +115,7 @@ const handleTagClick = (listboxElementList) => {
       handleTagClick(listboxUstensilsList);
       handleRemoveTag();
       
-      search(recipes, tags) // 3e argument $searchInput pour f° getRecipesBySearchInput
+      search(recipes, tags, searchInput) // 3e argument $searchInput pour f° getRecipesBySearchInput
     });
   });
 };
@@ -139,16 +139,18 @@ const handleRemoveTag = () => {
           refreshTagList(tags);
           handleRemoveTag();
 
-          search(recipes, tags) // 3e argument $searchInput pour f° getRecipesBySearchInput
+          search(recipes, tags, searchInput) // 3e argument $searchInput pour f° getRecipesBySearchInput
         });
   })
 }
 
+
 // Input search keyup event 
 document.querySelector("#search-input").addEventListener("keyup", (e) => {
-  const searchTextInput = e.target.value
-    search(recipes, tags, searchTextInput)
+  const searchInput = e.target.value.toLowerCase() // searchTextInput
+    search(recipes, tags, searchInput) // searchTextInput
 });
+
 
 // Listboxs list, input search events 
 const handleFilterListboxs = (listboxElementList, $listboxInput) => { 
