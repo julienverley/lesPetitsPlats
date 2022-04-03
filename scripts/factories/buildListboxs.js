@@ -12,6 +12,7 @@ export const getIngredients = ($recipes) => {
     })
     const noDuplicatesIngredients = allIngredients.filter(noDuplicates)
     noDuplicatesIngredients.sort((a, b) => a.localeCompare(b))
+    // console.log(noDuplicatesIngredients);
     return noDuplicatesIngredients // liste d'ingrédients triés non dupliqués 
 }
 export const getAppliances = ($recipes) => {

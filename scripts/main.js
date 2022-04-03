@@ -12,7 +12,7 @@ import {
 import {
   refreshTagList,
   addTags, 
-  removeTags, // 
+  removeTags, ////////////// ? 
 } from "./factories/buildTags.js"; 
 import {
   search, 
@@ -20,7 +20,6 @@ import {
 import { 
   recipes // array with recipes 
 } from "./data/recipes.js";
- 
 
 let tags = []; // array with objects
 // let searchInput = ""; // utilisée plus tard avec f° getRecipesBySearchInput
@@ -41,17 +40,6 @@ const listboxUstensilsChevron = document.getElementById('ustensils-btn-chevron')
 const listboxIngredientsInput = document.getElementById("ingredients-input")
 const listboxAppliancesInput = document.getElementById("appliances-input")
 const listboxUstensilsInput = document.getElementById("ustensils-input")
-// Main search input node
-const searchInput = document.getElementById("search-input").value //////// .value en plus 
-
-
-/* 
-searchInput.addEventListener('keyup', (e) => { ///////////
-  search = e.target.value 
-  console.log(search)
-});
- */
-
 
 // Create listboxs lists on load
 createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
@@ -99,23 +87,23 @@ listboxUstensilsInput.addEventListener("click", (e) => {
 });
 
 // Tags, add click events
-const handleTagClick = (listboxElementList) => { 
+export const handleTagClick = (listboxElementList) => { 
   const elements = listboxElementList.querySelectorAll("li") 
   elements.forEach(element => {
     element.addEventListener('click', (e) => {
       const dataType = e.target.dataset.type
       const name = e.target.textContent
-      const object = {name: name, attribute: dataType} 
+      const object = {name: name, attribute: dataType} // model !
       addTags(object, tags);
-      createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags); // model pour search(recipes, tags, searchInput )
+      createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags); // cf. search() ?
       createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
       createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);
-      handleTagClick(listboxIngredientsList); 
+      handleTagClick(listboxIngredientsList); // recursive 
       handleTagClick(listboxAppliancesList);
       handleTagClick(listboxUstensilsList);
       handleRemoveTag();
       
-      search(recipes, tags, searchInput) // 3e argument $searchInput pour f° getRecipesBySearchInput
+      search(recipes, tags) // 3e argument $searchInput pour f° getRecipesBySearchInput
     });
   });
 };
@@ -139,20 +127,17 @@ const handleRemoveTag = () => {
           refreshTagList(tags);
           handleRemoveTag();
 
-          search(recipes, tags, searchInput) // 3e argument $searchInput pour f° getRecipesBySearchInput
+          search(recipes, tags) // 3e argument $searchInput pour f° getRecipesBySearchInput
         });
   })
 }
 
-
 // Input search keyup event 
 document.querySelector("#search-input").addEventListener("keyup", (e) => {
-  const searchInput = e.target.value.toLowerCase() // searchTextInput
-    search(recipes, tags, searchInput) // searchTextInput
+    search(recipes, tags) // searchTextInput
 });
 
-
-// Listboxs list, input search events 
+// Listboxs list, input search events ////////////////////////// A revoir : rafraichir à la 
 const handleFilterListboxs = (listboxElementList, $listboxInput) => { 
   const elements = listboxElementList.querySelectorAll("li")
   const elementsArray = Array.from(elements);
@@ -165,9 +150,10 @@ const handleFilterListboxs = (listboxElementList, $listboxInput) => {
       });
       listboxElementList.innerHTML = ""
       refreshListboxsLists(filteredItemsListboxs, listboxElementList, tags);
+
     })
   }
-  handleFilterListboxs(listboxIngredientsList, "#ingredients-input"); 
+  handleFilterListboxs(listboxIngredientsList, "#ingredients-input");
   handleFilterListboxs(listboxAppliancesList, "#appliances-input");
   handleFilterListboxs(listboxUstensilsList, "#ustensils-input");
 

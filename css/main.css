@@ -153,10 +153,12 @@ b {
   background-color: #E7E7E7; }
 
 .card-body-top {
-  display: flex; }
+  display: flex;
+  justify-content: space-between; }
 
 .card-body-bottom {
-  display: flex; }
+  display: flex;
+  justify-content: space-between; }
 
 .recipe-ingredients {
   font-size: x-small; }

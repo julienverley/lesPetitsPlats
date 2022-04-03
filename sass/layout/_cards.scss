@@ -9,9 +9,11 @@
 }
 .card-body-top {
     display: flex;
+    justify-content: space-between;
 }
 .card-body-bottom {
     display: flex;
+    justify-content: space-between;
 }
 .recipe-ingredients {
     font-size: x-small;
