@@ -13,6 +13,10 @@
 .logo-text {
   text-align: center; }
 
+ul {
+  padding: 0;
+  margin: 0; }
+
 /* TYPO */
 * {
   font-family: Lato, sans-serif;
@@ -145,26 +149,59 @@ b {
   background-color: #ED6454; }
 
 /* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center; }
+
+.card {
+  width: 380px;
+  height: 364px;
+  margin: 50px; }
+
 .card-header {
-  height: 150px;
-  background-color: #C7BEBE; }
+  height: 178px;
+  background-color: #C7BEBE;
+  border-radius: 5px 5px 0 0; }
 
 .card-body {
+  height: 186px;
+  border-radius: 0 0 5px 5px;
+  padding: 10px;
+  margin: 0;
   background-color: #E7E7E7; }
 
 .card-body-top {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  align-items: center; }
+
+.time {
+  font-weight: 500; }
+
+.bi-clock {
+  font-size: 20px; }
 
 .card-body-bottom {
   display: flex;
   justify-content: space-between; }
 
 .recipe-ingredients {
-  font-size: x-small; }
+  max-width: 171px;
+  font-size: x-small;
+  padding: 2px; }
+
+.ingredient-quantity-unit {
+  font-size: 12px;
+  list-style-type: none; }
 
 .recipe-text {
-  font-size: x-small; }
+  max-width: 171px;
+  max-height: 109px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: x-small;
+  padding: 2px; }
 
 /* Search */
 .search-field {

@@ -47,7 +47,7 @@ export const createListboxsLists = ($recipes, $functionGetItems, $listboxElement
     });
 }
 
-// Refresh listboxs lists on input searchs
+// Refresh listboxs lists on input searchs //////////////////////////////// A revoir cf. main.js l 140
 export const refreshListboxsLists = ($filteredItemsListboxs, $listboxElementsList, $tags) => {
     $filteredItemsListboxs.forEach(filteredItemListbox => {
         //console.log(filteredItemListbox);

@@ -137,25 +137,30 @@ document.querySelector("#search-input").addEventListener("keyup", (e) => {
     search(recipes, tags) // searchTextInput
 });
 
-// Listboxs list, input search events ////////////////////////// A revoir : rafraichir à la 
+// Listboxs list, input search events ////////////////////////// A revoir : rafraichir aux tags ou à la recherche principale 
 const handleFilterListboxs = (listboxElementList, $listboxInput) => { 
   const elements = listboxElementList.querySelectorAll("li")
+  //console.log(elements);
   const elementsArray = Array.from(elements);
   // Search inputs 
   const listboxsInputs = document.querySelector($listboxInput)
     listboxsInputs.addEventListener('keyup', (e) => {
       const searchString = e.target.value;
-      const filteredItemsListboxs = elementsArray.filter((element) => { 
-        return element.innerHTML.includes(searchString)
-      });
-      listboxElementList.innerHTML = ""
-      refreshListboxsLists(filteredItemsListboxs, listboxElementList, tags);
-
+      console.log(searchString.length);
+      
+      if (searchString.length >= 3) { /////////////////// 
+        const filteredItemsListboxs = elementsArray.filter((element) => { 
+          console.log(element);
+          return element.innerHTML.includes(searchString) //////// 
+        });
+        listboxElementList.innerHTML = ""
+        refreshListboxsLists(filteredItemsListboxs, listboxElementList, tags); ///////////////////
+      }
     })
-  }
-  handleFilterListboxs(listboxIngredientsList, "#ingredients-input");
-  handleFilterListboxs(listboxAppliancesList, "#appliances-input");
-  handleFilterListboxs(listboxUstensilsList, "#ustensils-input");
+}
+handleFilterListboxs(listboxIngredientsList, "#ingredients-input");
+handleFilterListboxs(listboxAppliancesList, "#appliances-input");
+handleFilterListboxs(listboxUstensilsList, "#ustensils-input");
 
 
   
