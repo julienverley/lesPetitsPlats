@@ -185,7 +185,7 @@ b {
   @media screen and (max-width: 1400px) {
     .cards {
       grid-template-columns: repeat(2, 1fr); } }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1000px) {
     .cards {
       grid-template-columns: repeat(1, 1fr); } }
 
@@ -193,7 +193,9 @@ b {
   width: 380px;
   height: 364px;
   /* margin: 25px; */
-  justify-content: space-between; }
+  justify-content: space-between;
+  display: block;
+  margin: 0 auto; }
 
 .card-header {
   height: 178px;

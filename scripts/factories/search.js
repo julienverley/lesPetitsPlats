@@ -214,15 +214,3 @@ export const displayRecipes = (recipesAfterSearchInput) => {
     noSearchResult.classList.remove('hidden') 
   }
 };
-
-/* 
-if (object.quantity !== null && object.quantity !== undefined) {
-  const span = document.createElement('span')
-  span.textContent = `: ${object.quantity}`
-  
-  if (object.unit !== null && object.unit !== undefined) {
-      span.textContent = `: ${object.quantity} ${object.unit}`
-  }
-  li.appendChild(span)
-}
-*/
