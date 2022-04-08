@@ -13,8 +13,7 @@ const listboxUstensilsList = document.getElementById("ustensils-list");
 // Error message node
 const noSearchResult = document.getElementById('no-search-result')
 
-export const search = ($recipes, $tags) => {
-  document.querySelector('.cards').innerHTML = ""
+export const search = ($recipes, $tags, $toRefresh = true) => {
   // $searchInput getRecipesBySearchInput()
   const searchInput = document
     .getElementById("search-input")
@@ -27,22 +26,33 @@ export const search = ($recipes, $tags) => {
   );
   console.log("finalResult", recipesAfterSearchInput);
 
+  if ($toRefresh === true) {
+    displayAfterSearch(recipesAfterSearchInput, $tags);
+  }
+
+  return recipesAfterSearchInput;
+  // recipesAfterSearchInput ===> liste de recettes finales
+  // si recipesAfterSearchInput.length === 0 =>> afficher un message "Pas de résultat"
+  // sinon affichage ==> displayRecipes(recipesAfterSearchInput); // map/filter des deux [] pour créer un [] prêt à afficher
+};
+
+export const displayAfterSearch = ($refreshedRecipes, $tags) => {
   createListboxsLists(
-    recipesAfterSearchInput,
+    $refreshedRecipes,
     getIngredients,
     listboxIngredientsList,
     "ingredients",
     $tags
   );
   createListboxsLists(
-    recipesAfterSearchInput,
+    $refreshedRecipes,
     getAppliances,
     listboxAppliancesList,
     "appliances",
     $tags
   );
   createListboxsLists(
-    recipesAfterSearchInput,
+    $refreshedRecipes,
     getUstensils,
     listboxUstensilsList,
     "ustensils",
@@ -52,12 +62,8 @@ export const search = ($recipes, $tags) => {
   handleTagClick(listboxAppliancesList);
   handleTagClick(listboxUstensilsList);
 
-  displayRecipes(recipesAfterSearchInput);
-
-  // recipesAfterSearchInput ===> liste de recettes finales
-  // si recipesAfterSearchInput.length === 0 =>> afficher un message "Pas de résultat"
-  // sinon affichage ==> displayRecipes(recipesAfterSearchInput); // map/filter des deux [] pour créer un [] prêt à afficher
-};
+  displayRecipes($refreshedRecipes);
+}
 
 const getRecipesByTags = ($recipes, $tags) => {
   // liste de recettes qui ont les tags sélectionnés
@@ -141,6 +147,7 @@ const getRecipesBySearchInput = ($recipes, $searchInput) => {
 };
 
 export const displayRecipes = (recipesAfterSearchInput) => {
+  document.querySelector('.cards').innerHTML = ""
   // avant $recipes
   const cardNode = document.querySelector(".cards");
   console.log(cardNode); // OK

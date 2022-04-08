@@ -143,29 +143,33 @@ document.querySelector("#search-input").addEventListener("keyup", (e) => {
 });
 
 // Listboxs list, input search events ////////////////////////// A revoir : rafraichir aux tags ou à la recherche principale 
-const handleFilterListboxs = (listboxElementList, $listboxInput) => { 
-  const elements = listboxElementList.querySelectorAll("li")
-  //console.log(elements);
-  const elementsArray = Array.from(elements);
+const handleFilterListboxs = (listboxElementList, $listboxInput, $functionTag, $attribute) => { 
   // Search inputs 
   const listboxsInputs = document.querySelector($listboxInput)
     listboxsInputs.addEventListener('keyup', (e) => {
+      const refreshedRecipes = search(recipes, tags, false);
+      const elementsArray = $functionTag(refreshedRecipes);
       const searchString = e.target.value;
-      console.log(searchString.length);
       
-      if (searchString.length >= 3) { /////////////////// 
+      if (searchString.length >= 3) {
         const filteredItemsListboxs = elementsArray.filter((element) => { 
-          console.log(element);
-          return element.innerHTML.includes(searchString) //////// 
+          return element.toLowerCase().includes(searchString.toLowerCase()) //////// 
         });
+        console.log('filtered', filteredItemsListboxs);
         listboxElementList.innerHTML = ""
-        refreshListboxsLists(filteredItemsListboxs, listboxElementList, tags); ///////////////////
+        refreshListboxsLists(filteredItemsListboxs, listboxElementList, tags, $attribute); ///////////////////
+        handleTagClick(listboxElementList); 
+      } else {
+        listboxElementList.innerHTML = ""
+        refreshListboxsLists(elementsArray, listboxElementList, tags, $attribute); ///////////////////
+        handleTagClick(listboxElementList);
       }
     })
 }
-handleFilterListboxs(listboxIngredientsList, "#ingredients-input");
-handleFilterListboxs(listboxAppliancesList, "#appliances-input");
-handleFilterListboxs(listboxUstensilsList, "#ustensils-input");
+
+handleFilterListboxs(listboxIngredientsList, "#ingredients-input", getIngredients, 'ingredients');
+handleFilterListboxs(listboxAppliancesList, "#appliances-input", getAppliances, 'appliances');
+handleFilterListboxs(listboxUstensilsList, "#ustensils-input", getUstensils, 'ustensils');
 
 
   
