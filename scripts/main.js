@@ -16,6 +16,7 @@ import {
 } from "./factories/buildTags.js"; 
 import {
   search, 
+  displayRecipes,
 } from "./factories/search.js"
 import { 
   recipes // array with recipes 
@@ -41,10 +42,14 @@ const listboxIngredientsInput = document.getElementById("ingredients-input")
 const listboxAppliancesInput = document.getElementById("appliances-input")
 const listboxUstensilsInput = document.getElementById("ustensils-input")
 
+// Display all recipes on load 
+displayRecipes(recipes)
+
 // Create listboxs lists on load
 createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
 createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
 createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags); 
+
 
 // Listboxs display buttons click events
 listboxIngredientsBtn.addEventListener("click", (e) => {

@@ -18,7 +18,7 @@
    
     <!-- HEADER -->
     <header>
-      <section class="py-3">
+      <section class="header-section"> <!-- py-3 -->
         <div class="container">
           <div class="row justify-content-center"><!-- logo Vector -->
             <div class="logo-vector col-1 py-3">
@@ -38,7 +38,7 @@
     <main>
       
       <!-- SEARCH --> 
-      <section class="py-3">
+      <section class="search-section"> <!-- py-3 -->
         <div class="container">
           <div class="search-field bg-light p-4">
             <!-- <div class="col-12 py-2"></div> -->
@@ -49,10 +49,12 @@
         </div>
       </section>
 
+     
+
       <!-- LISTBOXS -->
-      <section class="py-3">
+      <section class="listboxs-section"> <!-- py-3 -->
         <div class="container">
-          <div class="listboxs">
+          <div class="listboxs container">
             <!-- Ingredients -->
             <div id="ingredients-listbox" class="listbox" data-type="ingredients">
                 <div id="ingredients-controls" class="listbox-controls" data-type="ingredients">
@@ -89,7 +91,13 @@
       </section>
 
       <!-- CARDS -->
-      <section class="py-3"><!-- class="py-4 px-4" -->
+       
+
+      <section class="results-section container"><!-- class="py-3 py-4 px-4" -->
+        <!-- NO RESULT -->
+        <span id="no-search-result" class="hidden container">
+          Aucune recette ne correspond à votre critère... vous pouvez chercher "tarte aux pommes", "poisson", etc.
+        </span>
 
         <div class="cards"><!-- container --><!-- row justify-content-between gx-1 -->
         </div>

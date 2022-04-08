@@ -6,9 +6,12 @@ import {
 } from "./buildListboxs.js";
 import { handleTagClick } from "../main.js";
 
+// Listboxs lists nodes
 const listboxIngredientsList = document.getElementById("ingredients-list");
 const listboxAppliancesList = document.getElementById("appliances-list");
 const listboxUstensilsList = document.getElementById("ustensils-list");
+// Error message node
+const noSearchResult = document.getElementById('no-search-result')
 
 export const search = ($recipes, $tags) => {
   document.querySelector('.cards').innerHTML = ""
@@ -137,7 +140,7 @@ const getRecipesBySearchInput = ($recipes, $searchInput) => {
   return newRecipes;
 };
 
-const displayRecipes = (recipesAfterSearchInput) => {
+export const displayRecipes = (recipesAfterSearchInput) => {
   // avant $recipes
   const cardNode = document.querySelector(".cards");
   console.log(cardNode); // OK
@@ -154,14 +157,25 @@ const displayRecipes = (recipesAfterSearchInput) => {
     console.log(recipeAfterSearchInputObject);
 
     const ingredientsLi = document.createElement("ul"); // 'div'
-    //ingredientsLi.classList.add('recipe-ingredients') ///////////////////// pas dans le DOM
 
     ingredients.forEach((object) => {
-      // if (object.quantity !== "" || object.quantity !== ""
-      if ((object.quantity === null || object.quantity === undefined) || (object.unit === null || object.unit === undefined)) {
+      // 1 2 3 !==
+      if ((object.ingredient !== undefined) 
+       && (object.quantity !== undefined) 
+       && (object.unit !== undefined)) {
+         ingredientsLi.innerHTML += `<li class="ingredient-quantity-unit"><b>${object.ingredient}</b> : ${object.quantity} ${object.unit}</li>`;
+      } 
+      // 1 !==  2 !==  3 null
+      if ((object.ingredient !== undefined) 
+       && (object.quantity !== undefined) 
+       && (object.unit == undefined)) {
+        ingredientsLi.innerHTML += `<li class="ingredient-quantity-unit"><b>${object.ingredient}</b> : ${object.quantity}</li>`;
+      } 
+      // 1 !==  2 null  3 null
+      if ((object.ingredient !== undefined) 
+        && (object.quantity == undefined) 
+        && (object.unit == undefined)) {
         ingredientsLi.innerHTML += `<li class="ingredient-quantity-unit"><b>${object.ingredient}</b></li>`;
-      } else {
-        ingredientsLi.innerHTML += `<li class="ingredient-quantity-unit"><b>${object.ingredient}</b> : ${object.quantity} ${object.unit}</li>`;
       }
     });
     console.log(ingredientsLi);
@@ -194,7 +208,10 @@ const displayRecipes = (recipesAfterSearchInput) => {
       div.classList.add("card");
       div.innerHTML = createFactoryCard(recipeAfterSearchInput);
       cardNode.append(div);
+      noSearchResult.classList.add('hidden')
     });
+  } else {
+    noSearchResult.classList.remove('hidden') 
   }
 };
 
