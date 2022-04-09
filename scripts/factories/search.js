@@ -146,6 +146,51 @@ const getRecipesBySearchInput = ($recipes, $searchInput) => {
   return newRecipes;
 };
 
+// filter forEach
+/* const getRecipesBySearchInput = ($recipes, $searchInput) => {
+  // main.js document.querySelector('#search-input')...
+  const newRecipes = [];
+  if ($searchInput.length < 3) {
+    return $recipes;
+  }
+  if ($searchInput.length >= 3) {
+    // Ingredients search
+    $recipes.filter((recipe) =>
+      recipe.ingredients.forEach((object) => {
+        const objectIngredient = object.ingredient.toLowerCase();
+        //console.log(objectIngredient);
+        if (objectIngredient.includes($searchInput)) {
+          if (!newRecipes.includes(recipe)) {
+            newRecipes.push(recipe);
+          }
+        }
+      })
+    );
+    // Recipe name search
+    $recipes.filter((recipe) => {
+      const recipeName = recipe.name.toLowerCase();
+      //console.log(recipeName);
+      if (recipeName.includes($searchInput)) {
+        if (!newRecipes.includes(recipe)) {
+          newRecipes.push(recipe); // console.log(newRecipes.push(recipe));
+        }
+      }
+    });
+    // Description search
+    $recipes.filter((recipe) => {
+      const recipeDescription = recipe.description.toLowerCase();
+      //console.log(recipeDescription);
+      if (recipeDescription.includes($searchInput)) {
+        if (!newRecipes.includes(recipe)) {
+          newRecipes.push(recipe);
+        }
+      }
+    });
+  }
+  return newRecipes;
+}; */
+
+
 export const displayRecipes = (recipesAfterSearchInput) => {
   document.querySelector('.cards').innerHTML = ""
   // avant $recipes
