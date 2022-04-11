@@ -12,7 +12,6 @@ export const getIngredients = ($recipes) => {
     })
     const noDuplicatesIngredients = allIngredients.filter(noDuplicates)
     noDuplicatesIngredients.sort((a, b) => a.localeCompare(b))
-    // console.log(noDuplicatesIngredients);
     return noDuplicatesIngredients // liste d'ingrédients triés non dupliqués 
 }
 export const getAppliances = ($recipes) => {
@@ -32,7 +31,6 @@ export const getUstensils = ($recipes) => {
     return noDuplicatesUstensils
 }
 
-
 // Create listboxs lists 
 export const createListboxsLists = ($recipes, $functionGetItems, $listboxElementsList, $attribute, $tags) => { 
     const items = $functionGetItems($recipes);
@@ -50,7 +48,6 @@ export const createListboxsLists = ($recipes, $functionGetItems, $listboxElement
 // Refresh listboxs lists on input searchs //////////////////////////////// A revoir cf. main.js l 140
 export const refreshListboxsLists = ($filteredItemsListboxs, $listboxElementsList, $tags, $attribute) => {
     $filteredItemsListboxs.forEach(filteredItemListbox => {
-        //console.log(filteredItemListbox);
         if (!$tags.find(tag => tag.name.toLowerCase() === filteredItemListbox.toLowerCase())) { 
             const element = document.createElement('li');
             element.textContent = filteredItemListbox.toLowerCase()

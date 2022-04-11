@@ -22,8 +22,8 @@ import {
   recipes // array with recipes 
 } from "./data/recipes.js";
 
-let tags = []; // array with objects
-// let searchInput = ""; // utilisée plus tard avec f° getRecipesBySearchInput
+// Tags array of objects
+let tags = []; 
 
 // Listboxs lists nodes
 const listboxIngredientsList = document.getElementById("ingredients-list")
@@ -122,7 +122,7 @@ const handleRemoveTag = () => {
   tagListHtml.forEach(tag => {
       tag.addEventListener('click', () => {
           const tagLabel = tag.getAttribute('data-name');
-          tags = tags.filter(tag => tag.name !== tagLabel);
+          tags = tags.filter(tag => tag.name !== tagLabel); //
           createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags); // model 
           createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags);  
           createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);
@@ -142,26 +142,26 @@ document.querySelector("#search-input").addEventListener("keyup", (e) => {
     search(recipes, tags) // searchTextInput
 });
 
-// Listboxs list, input search events ////////////////////////// A revoir : rafraichir aux tags ou à la recherche principale 
-const handleFilterListboxs = (listboxElementList, $listboxInput, $functionTag, $attribute) => { 
+// Listboxs list, input search events //
+const handleFilterListboxs = (listboxElementList, $listboxInput, $functionTag, $attribute) => { // $attibute = prototype f° 
   // Search inputs 
   const listboxsInputs = document.querySelector($listboxInput)
     listboxsInputs.addEventListener('keyup', (e) => {
-      const refreshedRecipes = search(recipes, tags, false);
-      const elementsArray = $functionTag(refreshedRecipes);
+      const refreshedRecipes = search(recipes, tags, false); // 
+      const elementsArray = $functionTag(refreshedRecipes); // 
       const searchString = e.target.value;
       
       if (searchString.length >= 3) {
         const filteredItemsListboxs = elementsArray.filter((element) => { 
-          return element.toLowerCase().includes(searchString.toLowerCase()) //////// 
+          return element.toLowerCase().includes(searchString.toLowerCase()) //
         });
-        console.log('filtered', filteredItemsListboxs);
+        console.log('filtered', filteredItemsListboxs); // 
         listboxElementList.innerHTML = ""
-        refreshListboxsLists(filteredItemsListboxs, listboxElementList, tags, $attribute); ///////////////////
+        refreshListboxsLists(filteredItemsListboxs, listboxElementList, tags, $attribute); //
         handleTagClick(listboxElementList); 
       } else {
         listboxElementList.innerHTML = ""
-        refreshListboxsLists(elementsArray, listboxElementList, tags, $attribute); ///////////////////
+        refreshListboxsLists(elementsArray, listboxElementList, tags, $attribute); //
         handleTagClick(listboxElementList);
       }
     })
@@ -172,7 +172,7 @@ handleFilterListboxs(listboxAppliancesList, "#appliances-input", getAppliances, 
 handleFilterListboxs(listboxUstensilsList, "#ustensils-input", getUstensils, 'ustensils');
 
 
-  
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
 I. Filtrer la liste des ingrédients avec l'input
 1. Evenement sur l'input (keyUp de préférence, change) // OK
@@ -192,3 +192,4 @@ IV. Filtrer les ingrédients, ustensils et appliance en fonction des recettes re
 
 V. Nouvelle branche => forEach, filter, find... => for, while...
 */
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
