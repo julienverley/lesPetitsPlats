@@ -22,36 +22,35 @@ import {
   recipes // array with recipes 
 } from "./data/recipes.js";
 
-let tags = []; // array with objects
-// let searchInput = ""; // utilisée plus tard avec f° getRecipesBySearchInput
+let tags = []; 
 
-// Listboxs lists nodes
+// Listboxs lists nodes :
 const listboxIngredientsList = document.getElementById("ingredients-list")
 const listboxAppliancesList = document.getElementById("appliances-list")
 const listboxUstensilsList = document.getElementById("ustensils-list")
-// Listboxs buttons nodes
+// Listboxs buttons nodes :
 const listboxIngredientsBtn = document.getElementById("ingredients-btn")
 const listboxAppliancesBtn = document.getElementById("appliances-btn")
 const listboxUstensilsBtn = document.getElementById("ustensils-btn")
-// Listboxs chevrons nodes
+// Listboxs chevrons nodes :
 const listboxIngredientsChevron = document.getElementById('ingredients-btn-chevron')
 const listboxAppliancesChevron = document.getElementById('appliances-btn-chevron') 
 const listboxUstensilsChevron = document.getElementById('ustensils-btn-chevron') 
-// Listboxs inputs nodes
+// Listboxs inputs nodes :
 const listboxIngredientsInput = document.getElementById("ingredients-input")
 const listboxAppliancesInput = document.getElementById("appliances-input")
 const listboxUstensilsInput = document.getElementById("ustensils-input")
 
-// Display all recipes on load 
+// Display all recipes on load :
 displayRecipes(recipes)
 
-// Create listboxs lists on load
+// Create listboxs lists on load :
 createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
 createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
 createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags); 
 
 
-// Listboxs display buttons click events
+// Listboxs display buttons click events :
 listboxIngredientsBtn.addEventListener("click", (e) => {
   e.preventDefault();
   displayListbox(listboxIngredientsList, listboxIngredientsChevron);
@@ -71,7 +70,7 @@ listboxUstensilsBtn.addEventListener("click", (e) => {
   displayListbox(listboxUstensilsList, listboxUstensilsChevron);
 });
 
-// Listboxs display inputs click events
+// Listboxs display inputs click events : 
 listboxIngredientsInput.addEventListener("click", (e) => {
   e.preventDefault();
   displayListbox(listboxIngredientsList, listboxIngredientsChevron);
@@ -91,7 +90,7 @@ listboxUstensilsInput.addEventListener("click", (e) => {
   displayListbox(listboxUstensilsList, listboxUstensilsChevron);
 });
 
-// Tags, add click events
+// Tags, add click events :
 export const handleTagClick = (listboxElementList) => { 
   const elements = listboxElementList.querySelectorAll("li") 
   elements.forEach(element => {
@@ -116,7 +115,7 @@ handleTagClick(listboxIngredientsList);
 handleTagClick(listboxAppliancesList);
 handleTagClick(listboxUstensilsList);
 
-// Tags, remove click events
+// Tags, remove click events : 
 const handleRemoveTag = () => {
   const tagListHtml = document.querySelectorAll('#tags .tag');
   tagListHtml.forEach(tag => {
@@ -137,14 +136,13 @@ const handleRemoveTag = () => {
   })
 }
 
-// Input search keyup event 
+// Input search keyup event :
 document.querySelector("#search-input").addEventListener("keyup", (e) => {
     search(recipes, tags) // searchTextInput
 });
 
-// Listboxs list, input search events ////////////////////////// A revoir : rafraichir aux tags ou à la recherche principale 
 const handleFilterListboxs = (listboxElementList, $listboxInput, $functionTag, $attribute) => { 
-  // Search inputs 
+  // Search inputs :
   const listboxsInputs = document.querySelector($listboxInput)
     listboxsInputs.addEventListener('keyup', (e) => {
       const refreshedRecipes = search(recipes, tags, false);
@@ -153,15 +151,15 @@ const handleFilterListboxs = (listboxElementList, $listboxInput, $functionTag, $
       
       if (searchString.length >= 3) {
         const filteredItemsListboxs = elementsArray.filter((element) => { 
-          return element.toLowerCase().includes(searchString.toLowerCase()) //////// 
+          return element.toLowerCase().includes(searchString.toLowerCase()) //
         });
         console.log('filtered', filteredItemsListboxs);
         listboxElementList.innerHTML = ""
-        refreshListboxsLists(filteredItemsListboxs, listboxElementList, tags, $attribute); ///////////////////
+        refreshListboxsLists(filteredItemsListboxs, listboxElementList, tags, $attribute); //
         handleTagClick(listboxElementList); 
       } else {
         listboxElementList.innerHTML = ""
-        refreshListboxsLists(elementsArray, listboxElementList, tags, $attribute); ///////////////////
+        refreshListboxsLists(elementsArray, listboxElementList, tags, $attribute); //
         handleTagClick(listboxElementList);
       }
     })
