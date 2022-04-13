@@ -7,6 +7,7 @@ const noDuplicates = ($value, $index, $self) => {
 // Get items for listboxs
 export const getIngredients = ($recipes) => {
     const allIngredients = []
+    console.log($recipes);
     $recipes.forEach(recipe => { // ça bloque pour filteredItemsListboxs qui renvoie un tableau
         recipe.ingredients.forEach(object => allIngredients.push(object.ingredient))
     })

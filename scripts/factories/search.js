@@ -16,23 +16,18 @@ const noSearchResult = document.getElementById('no-search-result')
 export const search = ($recipes, $tags, $toRefresh = true) => {
   const searchInput = document
     .getElementById("search-input")
-    .value.toLowerCase(); // Avant, dans main.js
+    .value.toLowerCase(); 
   const recipesAfterTagFilter = getRecipesByTags($recipes, $tags);
-  //console.log("result tags", recipesAfterTagFilter);
   const recipesAfterSearchInput = getRecipesBySearchInput(
     recipesAfterTagFilter,
     searchInput
   );
-  //console.log("finalResult", recipesAfterSearchInput);
 
   if ($toRefresh === true) {
     displayAfterSearch(recipesAfterSearchInput, $tags);
   }
 
   return recipesAfterSearchInput;
-  // recipesAfterSearchInput ===> liste de recettes finales
-  // si recipesAfterSearchInput.length === 0 =>> afficher un message "Pas de résultat"
-  // sinon affichage ==> displayRecipes(recipesAfterSearchInput); // map/filter des deux [] pour créer un [] prêt à afficher
 };
 
 export const displayAfterSearch = ($refreshedRecipes, $tags) => {
@@ -57,7 +52,7 @@ export const displayAfterSearch = ($refreshedRecipes, $tags) => {
     "ustensils",
     $tags
   );
-  handleTagClick(listboxIngredientsList); // addEventlistener à l'écoute en global
+  handleTagClick(listboxIngredientsList); 
   handleTagClick(listboxAppliancesList);
   handleTagClick(listboxUstensilsList);
 
@@ -72,7 +67,7 @@ const getRecipesByTags = ($recipes, $tags) => {
   const newRecipes = [];
   $recipes.forEach((recipe) => {
     // $recipes.forEach
-    let containsAllTags = true; //
+    let containsAllTags = true;
     $tags.forEach((tag) => {
       const tagName = tag.name;
       let containsIngredientTag = false;
@@ -109,8 +104,6 @@ const getRecipesBySearchInput = ($recipes, $searchInput) => {
     return $recipes;
   }
 
-
-
   if ($searchInput.length >= 3) {
     
     
@@ -120,23 +113,25 @@ const getRecipesBySearchInput = ($recipes, $searchInput) => {
       recipeObjectsIngredients.push($recipes[i].ingredients)
       //console.log($recipes[i].ingredients);
       const objectsIngredients = $recipes[i].ingredients //.toLowerCase()
-      //console.log(objectsIngredients); // Ok chaque recipe 
+      console.log(objectsIngredients); // Ok chaque recipe [{} {}]
 
-      let recipesIngredients = []
+      let recipesIngredients = [] 
       for(let i = 0; i < objectsIngredients.length; i++){
         recipesIngredients.push(objectsIngredients[i].ingredient)
         //console.log(objectsIngredients[i].ingredient);
-        const objectIngredient = objectsIngredients[i].ingredient.toLowerCase()
+        const objectIngredient = objectsIngredients[i].ingredient.toLowerCase() 
         //console.log(objectIngredient);
 
         if (objectIngredient.includes($searchInput)) {
           if (!newRecipes.includes(objectIngredient)) {
-            newRecipes.push(objectIngredient);
+            newRecipes.push(objectIngredient); // pb string, pas object
           }
         }
       }
+      console.log(recipesIngredients);
     }
-    //console.log(newRecipes); 
+    //console.log(newRecipes); // devrait envoyer un object
+    
 
       /* 
     $recipes.filter((recipe) =>
@@ -167,7 +162,7 @@ const getRecipesBySearchInput = ($recipes, $searchInput) => {
         }
       }
     }
-    //console.log(newRecipes); 
+    console.log(newRecipes); 
 
    /*  
     $recipes.filter((recipe) => {
@@ -195,7 +190,7 @@ const getRecipesBySearchInput = ($recipes, $searchInput) => {
         }
       }
     }
-    //console.log(newRecipes); // OK [{} {}...], mais pas d'affichage 
+    console.log(newRecipes);
 
     /* 
     $recipes.filter((recipe) => {
@@ -209,7 +204,7 @@ const getRecipesBySearchInput = ($recipes, $searchInput) => {
     });
 
  */  }
-  //console.log(newRecipes);
+  console.log( typeof newRecipes);
   return newRecipes;
 };
 
@@ -263,22 +258,17 @@ const getRecipesBySearchInput = ($recipes, $searchInput) => {
 
 export const displayRecipes = (recipesAfterSearchInput) => {
   document.querySelector('.cards').innerHTML = ""
-  // avant $recipes
   const cardNode = document.querySelector(".cards");
-  //console.log(cardNode); // OK
-  // soit 1 ou plus => affichage
-  // 0 => "Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc."
 
   const createFactoryCard = (recipeAfterSearchInputObject) => {
     const {
       name,
       time,
       ingredients,
-      description, // ingredient quantity unit // undefined
-    } = recipeAfterSearchInputObject; // not defined
-    //console.log(recipeAfterSearchInputObject);
+      description, 
+    } = recipeAfterSearchInputObject; 
 
-    const ingredientsLi = document.createElement("ul"); // 'div'
+    const ingredientsLi = document.createElement("ul"); 
 
     ingredients.forEach((object) => {
       // 1 2 3 !==
@@ -287,22 +277,19 @@ export const displayRecipes = (recipesAfterSearchInput) => {
        && (object.unit !== undefined)) {
          ingredientsLi.innerHTML += `<li class="ingredient-quantity-unit"><b>${object.ingredient}</b> : ${object.quantity} ${object.unit}</li>`;
       } 
-      // 1 !==  2 !==  3 null
+      // 1 !==  2 !==  3 undefined
       if ((object.ingredient !== undefined) 
        && (object.quantity !== undefined) 
        && (object.unit == undefined)) {
         ingredientsLi.innerHTML += `<li class="ingredient-quantity-unit"><b>${object.ingredient}</b> : ${object.quantity}</li>`;
       } 
-      // 1 !==  2 null  3 null
+      // 1 !==  2 undefined  3 undefined
       if ((object.ingredient !== undefined) 
         && (object.quantity == undefined) 
         && (object.unit == undefined)) {
         ingredientsLi.innerHTML += `<li class="ingredient-quantity-unit"><b>${object.ingredient}</b></li>`;
       }
     });
-    //console.log(ingredientsLi);
-    //const card = document.querySelector('.card')
-    // card.classList.add('card') // class déjà existante
 
     const createCardDom = `<div class="card-header"></div>
     <div class="card-body">
@@ -315,17 +302,11 @@ export const displayRecipes = (recipesAfterSearchInput) => {
         <p class="recipe-text card-text">${description}</p>
       </div>
     </div>`;
-
-    //cardNode.innerHTML = createCardDom;
-    // console.log(createCardDom);
     return createCardDom;
   };
 
   if (recipesAfterSearchInput.length >= 1) {
-    //console.log(recipesAfterSearchInput); //
-
     recipesAfterSearchInput.forEach((recipeAfterSearchInput) => {
-      //console.log(recipeAfterSearchInput);
       const div = document.createElement("div");
       div.classList.add("card");
       div.innerHTML = createFactoryCard(recipeAfterSearchInput);
