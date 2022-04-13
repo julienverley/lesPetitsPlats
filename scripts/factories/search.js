@@ -103,158 +103,40 @@ const getRecipesBySearchInput = ($recipes, $searchInput) => {
   if ($searchInput.length < 3) {
     return $recipes;
   }
-
   if ($searchInput.length >= 3) {
-    
-    
-    // Ingredients search
-    let recipeObjectsIngredients = []
-    for(let i = 0; i < $recipes.length; i++){
-      recipeObjectsIngredients.push($recipes[i].ingredients)
-      //console.log($recipes[i].ingredients);
-      const objectsIngredients = $recipes[i].ingredients //.toLowerCase()
-      console.log(objectsIngredients); // Ok chaque recipe [{} {}]
-
-      let recipesIngredients = [] 
-      for(let i = 0; i < objectsIngredients.length; i++){
-        recipesIngredients.push(objectsIngredients[i].ingredient)
-        //console.log(objectsIngredients[i].ingredient);
-        const objectIngredient = objectsIngredients[i].ingredient.toLowerCase() 
-        //console.log(objectIngredient);
-
+    // Recipe ingredients search
+    for(let i = 0; i < $recipes.length; i++) {
+      for(let j = 0; j < $recipes[i].ingredients.length; j++) {
+        const objectIngredient = $recipes[i].ingredients[j].ingredient.toLowerCase()
         if (objectIngredient.includes($searchInput)) {
-          if (!newRecipes.includes(objectIngredient)) {
-            newRecipes.push(objectIngredient); // pb string, pas object
+          if (!newRecipes.includes($recipes[i])) {
+            newRecipes.push($recipes[i]);
           }
         }
       }
-      console.log(recipesIngredients);
     }
-    //console.log(newRecipes); // devrait envoyer un object
-    
-
-      /* 
-    $recipes.filter((recipe) =>
-      recipe.ingredients.forEach((object) => {
-        const objectIngredient = object.ingredient.toLowerCase();
-        //console.log(objectIngredient);
-        if (objectIngredient.includes($searchInput)) {
-          if (!newRecipes.includes(recipe)) {
-            newRecipes.push(recipe);
-          }
-        }
-      })
-    );
-     */
-    //console.log(newRecipes);
-
-    
     // Recipe name search
-    let recipeNames = []
     for(let i = 0; i < $recipes.length; i++){
-      recipeNames.push($recipes[i].name)
-      //console.log($recipes[i].name);
       const recipeName = $recipes[i].name.toLowerCase()
-      //console.log(recipeName);
       if (recipeName.includes($searchInput)) {
         if (!newRecipes.includes(recipeName)) {
-          newRecipes.push(recipeName); // console.log(newRecipes.push(recipe));
+          newRecipes.push($recipes[i]); 
         }
       }
     }
-    console.log(newRecipes); 
-
-   /*  
-    $recipes.filter((recipe) => {
-      const recipeName = recipe.name.toLowerCase();
-      //console.log(recipeName);
-      if (recipeName.includes($searchInput)) {
-        if (!newRecipes.includes(recipe)) {
-          newRecipes.push(recipe); // console.log(newRecipes.push(recipe));
-        }
-      }
-    });
-  */
-    
-
     // Description search
-    let recipeDescriptions = []
     for(let i = 0; i < $recipes.length; i++) {
-      recipeDescriptions.push($recipes[i].description)
-      //console.log($recipes[i].name);
       const recipeDescription = $recipes[i].description.toLowerCase()
-      //console.log(recipeName);
       if (recipeDescription.includes($searchInput)) {
         if (!newRecipes.includes(recipeDescription)) {
-          newRecipes.push(recipeDescription); // console.log(newRecipes.push(recipe));
+          newRecipes.push($recipes[i]);
         }
       }
     }
-    console.log(newRecipes);
-
-    /* 
-    $recipes.filter((recipe) => {
-      const recipeDescription = recipe.description.toLowerCase();
-      //console.log(recipeDescription);
-      if (recipeDescription.includes($searchInput)) {
-        if (!newRecipes.includes(recipe)) {
-          newRecipes.push(recipe);
-        }
-      }
-    });
-
- */  }
-  console.log( typeof newRecipes);
+  }
+  //console.log(newRecipes); // Ok objects
   return newRecipes;
 };
-
-// filter forEach
-/* const getRecipesBySearchInput = ($recipes, $searchInput) => {
-  // main.js document.querySelector('#search-input')...
-  const newRecipes = [];
-  if ($searchInput.length < 3) {
-    return $recipes;
-  }
-  if ($searchInput.length >= 3) {
-   
-    // Ingredients search
-    $recipes.filter((recipe) =>
-      recipe.ingredients.forEach((object) => {
-        const objectIngredient = object.ingredient.toLowerCase();
-        //console.log(objectIngredient);
-        if (objectIngredient.includes($searchInput)) {
-          if (!newRecipes.includes(recipe)) {
-            newRecipes.push(recipe);
-          }
-        }
-      })
-    );
-    
-    // Recipe name search
-    $recipes.filter((recipe) => {
-      const recipeName = recipe.name.toLowerCase();
-      //console.log(recipeName);
-      if (recipeName.includes($searchInput)) {
-        if (!newRecipes.includes(recipe)) {
-          newRecipes.push(recipe); // console.log(newRecipes.push(recipe));
-        }
-      }
-    });
-    
-    // Description search
-    $recipes.filter((recipe) => {
-      const recipeDescription = recipe.description.toLowerCase();
-      //console.log(recipeDescription);
-      if (recipeDescription.includes($searchInput)) {
-        if (!newRecipes.includes(recipe)) {
-          newRecipes.push(recipe);
-        }
-      }
-    });
-  }
-  return newRecipes;
-}; */
-
 
 export const displayRecipes = (recipesAfterSearchInput) => {
   document.querySelector('.cards').innerHTML = ""
