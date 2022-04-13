@@ -173,11 +173,11 @@ handleFilterListboxs(listboxUstensilsList, "#ustensils-input", getUstensils, 'us
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
 I. Filtrer la liste des ingrédients avec l'input
-1. Evenement sur l'input (keyUp de préférence, change) // OK
-2. Filtrer le tableau d'ingrédients au complet => liste réduite // OK
-3. Rafraîchir l'affichage // OK
+1. Evenement sur l'input (keyUp de préférence, change)
+2. Filtrer le tableau d'ingrédients au complet => liste réduite
+3. Rafraîchir l'affichage
 
-II. Filtrer la liste des ingrédients, ustensils et appliance en fonction des tags déjà ajoutés // OK  
+II. Filtrer la liste des ingrédients, ustensils et appliance en fonction des tags déjà ajoutés  
 
 III. search($tags, $search);
 1. Ajout d'un tag
