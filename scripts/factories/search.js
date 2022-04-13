@@ -132,7 +132,6 @@ const getRecipesBySearchInput = ($recipes, $searchInput) => {
       }
     }
   }
-  //console.log(newRecipes); // Ok objects
   return newRecipes;
 };
 

@@ -1,12 +1,13 @@
-/* @use './base/' as base;
-@use './components/' as components;
-@use './layout/' as layout;
-@use './utils/' as utils; */
+/* @use './base/' as base;*/
+/*@use './components/' as components;*/
+/*@use './layout/' as layout;*/
+/*@use './utils/' as utils; */
 /* Imports of .scss files  */
 /* Colors */
 /* Border-radius */
 /* BASE  */
 /* Header */
+
 .logo-vector {
   text-align: center; }
 
