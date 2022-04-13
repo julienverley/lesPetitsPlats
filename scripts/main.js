@@ -1,6 +1,5 @@
-import { 
-  displayListbox, 
-  hideListbox 
+import {
+  toggleListBox
 } from "./displays/displayListboxs.js";
 import {
   getIngredients,
@@ -49,45 +48,13 @@ createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredient
 createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
 createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags); 
 
-
-// Listboxs display buttons click events :
-listboxIngredientsBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  displayListbox(listboxIngredientsList, listboxIngredientsChevron);
-  hideListbox(listboxAppliancesList, listboxAppliancesChevron);
-  hideListbox(listboxUstensilsList, listboxUstensilsChevron);
-});
-listboxAppliancesBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  hideListbox(listboxIngredientsList, listboxIngredientsChevron);
-  displayListbox(listboxAppliancesList, listboxAppliancesChevron);
-  hideListbox(listboxUstensilsList, listboxUstensilsChevron);
-});
-listboxUstensilsBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  hideListbox(listboxIngredientsList, listboxIngredientsChevron);
-  hideListbox(listboxAppliancesList, listboxAppliancesChevron);
-  displayListbox(listboxUstensilsList, listboxUstensilsChevron);
-});
-
-// Listboxs display inputs click events : 
-listboxIngredientsInput.addEventListener("click", (e) => {
-  e.preventDefault();
-  displayListbox(listboxIngredientsList, listboxIngredientsChevron);
-  hideListbox(listboxAppliancesList, listboxAppliancesChevron);
-  hideListbox(listboxUstensilsList, listboxUstensilsChevron);
-});
-listboxAppliancesInput.addEventListener("click", (e) => {
-  e.preventDefault();
-  hideListbox(listboxIngredientsList, listboxIngredientsChevron);
-  displayListbox(listboxAppliancesList, listboxAppliancesChevron);
-  hideListbox(listboxUstensilsList, listboxUstensilsChevron);
-});
-listboxUstensilsInput.addEventListener("click", (e) => {
-  e.preventDefault();
-  hideListbox(listboxIngredientsList, listboxIngredientsChevron);
-  hideListbox(listboxAppliancesList, listboxAppliancesChevron);
-  displayListbox(listboxUstensilsList, listboxUstensilsChevron);
+document.querySelectorAll('.listbox-controls').forEach(element => {
+  element.addEventListener('click', () => {
+    const parentElement = element.closest('.listbox');
+    const listboxList = parentElement.querySelector('.listbox-list');
+    const chevron = parentElement.querySelector('.chevron');
+    toggleListBox(listboxList, chevron);
+  });
 });
 
 // Tags, add click events :
@@ -106,6 +73,7 @@ export const handleTagClick = (listboxElementList) => {
       handleTagClick(listboxAppliancesList);
       handleTagClick(listboxUstensilsList);
       handleRemoveTag();
+      
       search(recipes, tags) 
     });
   });
@@ -129,6 +97,7 @@ const handleRemoveTag = () => {
           handleTagClick(listboxUstensilsList);
           refreshTagList(tags);
           handleRemoveTag();
+
           search(recipes, tags)
         });
   })

@@ -1,18 +1,15 @@
-// Show or hide listboxs :
-export const displayListbox = ($listboxList, $chevron) => { 
+export const toggleListBox = ($listboxList, $chevron) => {
+  if ($listboxList.classList.contains('hidden')) {
     $listboxList.classList.remove('hidden')
     $listboxList.classList.add('show')
-
-    $chevron.classList.remove('fa-chevron-down') ///// $chevron
     $chevron.classList.add('fa-chevron-up') ///// $chevron
-    //document.getElementById('')...
-}
-export const hideListbox = ($listboxList, $chevron) => {
+    $chevron.classList.remove('fa-chevron-down') ///// $chevron
+  } else {
     $listboxList.classList.add('hidden')
     $listboxList.classList.remove('show')
-
     $chevron.classList.remove('fa-chevron-up') ///// $chevron
     $chevron.classList.add('fa-chevron-down') ///// $chevron
+  }
 }
 
 /* 
