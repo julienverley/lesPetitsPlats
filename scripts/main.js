@@ -106,7 +106,6 @@ export const handleTagClick = (listboxElementList) => {
       handleTagClick(listboxAppliancesList);
       handleTagClick(listboxUstensilsList);
       handleRemoveTag();
-      
       search(recipes, tags) 
     });
   });
@@ -130,7 +129,6 @@ const handleRemoveTag = () => {
           handleTagClick(listboxUstensilsList);
           refreshTagList(tags);
           handleRemoveTag();
-
           search(recipes, tags)
         });
   })
