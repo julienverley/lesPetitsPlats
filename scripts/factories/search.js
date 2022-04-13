@@ -6,14 +6,14 @@ import {
 } from "./buildListboxs.js";
 import { handleTagClick } from "../main.js";
 
-// Listboxs lists nodes
+// Listboxs lists nodes :
 const listboxIngredientsList = document.getElementById("ingredients-list");
 const listboxAppliancesList = document.getElementById("appliances-list");
 const listboxUstensilsList = document.getElementById("ustensils-list");
-// Error message node
+// Error message node :
 const noSearchResult = document.getElementById('no-search-result')
 
-// Search 
+// Search :
 export const search = ($recipes, $tags, $toRefresh = true) => {
   const searchInput = document
     .getElementById("search-input")
@@ -30,10 +30,10 @@ export const search = ($recipes, $tags, $toRefresh = true) => {
     displayAfterSearch(recipesAfterSearchInput, $tags);
   }
   console.log(recipesAfterSearchInput);
-  return recipesAfterSearchInput; // // final recipe(s) list 
+  return recipesAfterSearchInput; // final recipe(s) list 
 };
 
-// Display recipes after search (with listboxslists updates)
+// Display recipes after search (with listboxslists updates) :
 export const displayAfterSearch = ($refreshedRecipes, $tags) => {
   createListboxsLists(
     $refreshedRecipes,
@@ -62,7 +62,7 @@ export const displayAfterSearch = ($refreshedRecipes, $tags) => {
   displayRecipes($refreshedRecipes);
 }
 
-// Get recipes by tags 
+// Get recipes by tags :
 const getRecipesByTags = ($recipes, $tags) => {
   if ($tags.length === 0) {
     return $recipes;
@@ -99,14 +99,14 @@ const getRecipesByTags = ($recipes, $tags) => {
   return newRecipes;
 };
 
-// Get recipes by search
+// Get recipes by search :
 const getRecipesBySearchInput = ($recipes, $searchInput) => {
   const newRecipes = [];
   if ($searchInput.length < 3) {
     return $recipes; // all 50 recipes
   }
   if ($searchInput.length >= 3) {
-    // Ingredients search
+    // Ingredients search :
     $recipes.filter((recipe) =>
       recipe.ingredients.forEach((object) => {
         const objectIngredient = object.ingredient.toLowerCase();
@@ -117,7 +117,7 @@ const getRecipesBySearchInput = ($recipes, $searchInput) => {
         }
       })
     );
-    // Recipe name search
+    // Recipe name search : 
     $recipes.filter((recipe) => {
       const recipeName = recipe.name.toLowerCase();
       if (recipeName.includes($searchInput)) {
@@ -126,7 +126,7 @@ const getRecipesBySearchInput = ($recipes, $searchInput) => {
         }
       }
     });
-    // Description search
+    // Description search :
     $recipes.filter((recipe) => {
       const recipeDescription = recipe.description.toLowerCase();
       if (recipeDescription.includes($searchInput)) {
@@ -139,7 +139,7 @@ const getRecipesBySearchInput = ($recipes, $searchInput) => {
   return newRecipes;
 };
 
-// Display recipes 
+// Display recipes :
 export const displayRecipes = (recipesAfterSearchInput) => {
   document.querySelector('.cards').innerHTML = ""
   const cardNode = document.querySelector(".cards");
@@ -151,30 +151,28 @@ export const displayRecipes = (recipesAfterSearchInput) => {
       ingredients,
       description, 
     } = recipeAfterSearchInputObject; 
-    //console.log(recipeAfterSearchInputObject);
     const ingredientsLi = document.createElement("ul");
 
     ingredients.forEach((object) => {
-      // no undefined 
+      // no undefined :
       if ((object.ingredient !== undefined) 
        && (object.quantity !== undefined) 
        && (object.unit !== undefined)) {
          ingredientsLi.innerHTML += `<li class="ingredient-quantity-unit"><b>${object.ingredient}</b> : ${object.quantity} ${object.unit}</li>`;
       } 
-      // unit undefined 
+      // unit undefined : 
       if ((object.ingredient !== undefined) 
        && (object.quantity !== undefined) 
        && (object.unit == undefined)) {
         ingredientsLi.innerHTML += `<li class="ingredient-quantity-unit"><b>${object.ingredient}</b> : ${object.quantity}</li>`;
       } 
-      // unit and quantity undefined
+      // unit and quantity undefined :
       if ((object.ingredient !== undefined) 
         && (object.quantity == undefined) 
         && (object.unit == undefined)) {
         ingredientsLi.innerHTML += `<li class="ingredient-quantity-unit"><b>${object.ingredient}</b></li>`;
       }
     });
-    //console.log(ingredientsLi);
 
     const createCardDom = `<div class="card-header"></div>
     <div class="card-body">
@@ -191,9 +189,7 @@ export const displayRecipes = (recipesAfterSearchInput) => {
   };
 
   if (recipesAfterSearchInput.length >= 1) {
-    //console.log(recipesAfterSearchInput); //
     recipesAfterSearchInput.forEach((recipeAfterSearchInput) => {
-      //console.log(recipeAfterSearchInput);
       const div = document.createElement("div");
       div.classList.add("card");
       div.innerHTML = createFactoryCard(recipeAfterSearchInput);
