@@ -98,21 +98,21 @@ export const handleTagClick = (listboxElementList) => {
     element.addEventListener('click', (e) => {
       const dataType = e.target.dataset.type
       const name = e.target.textContent
-      const object = {name: name, attribute: dataType} // model !
+      const object = {name: name, attribute: dataType} 
       addTags(object, tags);
-      createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags); // cf. search() ?
+      createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags); 
       createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
       createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);
-      handleTagClick(listboxIngredientsList); // recursive 
+      handleTagClick(listboxIngredientsList); 
       handleTagClick(listboxAppliancesList);
       handleTagClick(listboxUstensilsList);
       handleRemoveTag();
       
-      search(recipes, tags) // 3e argument $searchInput pour f° getRecipesBySearchInput
+      search(recipes, tags) 
     });
   });
 };
-handleTagClick(listboxIngredientsList); // addEventlistener à l'écoute en global 
+handleTagClick(listboxIngredientsList); 
 handleTagClick(listboxAppliancesList);
 handleTagClick(listboxUstensilsList);
 
@@ -123,7 +123,7 @@ const handleRemoveTag = () => {
       tag.addEventListener('click', () => {
           const tagLabel = tag.getAttribute('data-name');
           tags = tags.filter(tag => tag.name !== tagLabel);
-          createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags); // model 
+          createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
           createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags);  
           createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);
           handleTagClick(listboxIngredientsList); 
@@ -132,7 +132,7 @@ const handleRemoveTag = () => {
           refreshTagList(tags);
           handleRemoveTag();
 
-          search(recipes, tags) // 3e argument $searchInput pour f° getRecipesBySearchInput
+          search(recipes, tags)
         });
   })
 }
