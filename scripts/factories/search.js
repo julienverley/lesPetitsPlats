@@ -117,7 +117,7 @@ const getRecipesBySearchInput = ($recipes, $searchInput) => {
     for(let i = 0; i < $recipes.length; i++){
       const recipeName = $recipes[i].name.toLowerCase()
       if (recipeName.includes($searchInput)) {
-        if (!newRecipes.includes(recipeName)) {
+        if (!newRecipes.includes($recipes[i])) {
           newRecipes.push($recipes[i]); 
         }
       }
@@ -126,13 +126,13 @@ const getRecipesBySearchInput = ($recipes, $searchInput) => {
     for(let i = 0; i < $recipes.length; i++) {
       const recipeDescription = $recipes[i].description.toLowerCase()
       if (recipeDescription.includes($searchInput)) {
-        if (!newRecipes.includes(recipeDescription)) {
+        if (!newRecipes.includes($recipes[i])) {
           newRecipes.push($recipes[i]);
         }
       }
     }
   }
-  console.log(newRecipes); // Ok objects
+  //console.log(newRecipes); // Ok objects
   return newRecipes;
 };
 

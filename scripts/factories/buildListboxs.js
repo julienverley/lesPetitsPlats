@@ -1,19 +1,18 @@
-
-// No dupicates items in listboxs 
+// No dupicates items in listboxs :
 const noDuplicates = ($value, $index, $self) => { 
     return $self.indexOf($value) === $index 
 }
 
-// Get items for listboxs
+// Get items for listboxs :
 export const getIngredients = ($recipes) => {
     const allIngredients = []
-    console.log($recipes);
-    $recipes.forEach(recipe => { // ça bloque pour filteredItemsListboxs qui renvoie un tableau
+    //console.log($recipes);
+    $recipes.forEach(recipe => { 
         recipe.ingredients.forEach(object => allIngredients.push(object.ingredient))
     })
     const noDuplicatesIngredients = allIngredients.filter(noDuplicates)
     noDuplicatesIngredients.sort((a, b) => a.localeCompare(b))
-    return noDuplicatesIngredients // liste d'ingrédients triés non dupliqués 
+    return noDuplicatesIngredients 
 }
 export const getAppliances = ($recipes) => {
     const allAppliances = []
@@ -32,21 +31,21 @@ export const getUstensils = ($recipes) => {
     return noDuplicatesUstensils
 }
 
-// Create listboxs lists 
+// Create listboxs lists :
 export const createListboxsLists = ($recipes, $functionGetItems, $listboxElementsList, $attribute, $tags) => { 
     const items = $functionGetItems($recipes);
     $listboxElementsList.innerHTML = '';
     items.forEach(item => {
         const elementList = document.createElement('li')
         elementList.textContent = item.toLowerCase()
-        elementList.setAttribute('data-type', $attribute) // CSS data-type 
+        elementList.setAttribute('data-type', $attribute) 
         if (!$tags.find(tag => tag.name.toLowerCase() === item.toLowerCase())) { // if item ≠ tag... 
             $listboxElementsList.append(elementList); // ... append each item in listboxList
         }     
     });
 }
 
-// Refresh listboxs lists on input searchs //////////////////////////////// A revoir cf. main.js l 140
+// Refresh listboxs lists :
 export const refreshListboxsLists = ($filteredItemsListboxs, $listboxElementsList, $tags, $attribute) => {
     $filteredItemsListboxs.forEach(filteredItemListbox => {
         if (!$tags.find(tag => tag.name.toLowerCase() === filteredItemListbox.toLowerCase())) { 
