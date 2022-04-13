@@ -1,6 +1,5 @@
-import { 
-  displayListbox, 
-  hideListbox 
+import {
+  toggleListBox
 } from "./displays/displayListboxs.js";
 import {
   getIngredients,
@@ -12,7 +11,7 @@ import {
 import {
   refreshTagList,
   addTags, 
-  removeTags, //////////////////// ? 
+  removeTags, ////////////// ? 
 } from "./factories/buildTags.js"; 
 import {
   search, 
@@ -28,7 +27,7 @@ let tags = [];
 const listboxIngredientsList = document.getElementById("ingredients-list")
 const listboxAppliancesList = document.getElementById("appliances-list")
 const listboxUstensilsList = document.getElementById("ustensils-list")
-// Listboxs buttons nodes : 
+// Listboxs buttons nodes :
 const listboxIngredientsBtn = document.getElementById("ingredients-btn")
 const listboxAppliancesBtn = document.getElementById("appliances-btn")
 const listboxUstensilsBtn = document.getElementById("ustensils-btn")
@@ -49,45 +48,13 @@ createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredient
 createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
 createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags); 
 
-
-// Listboxs display buttons click events :
-listboxIngredientsBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  displayListbox(listboxIngredientsList, listboxIngredientsChevron);
-  hideListbox(listboxAppliancesList, listboxAppliancesChevron);
-  hideListbox(listboxUstensilsList, listboxUstensilsChevron);
-});
-listboxAppliancesBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  hideListbox(listboxIngredientsList, listboxIngredientsChevron);
-  displayListbox(listboxAppliancesList, listboxAppliancesChevron);
-  hideListbox(listboxUstensilsList, listboxUstensilsChevron);
-});
-listboxUstensilsBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  hideListbox(listboxIngredientsList, listboxIngredientsChevron);
-  hideListbox(listboxAppliancesList, listboxAppliancesChevron);
-  displayListbox(listboxUstensilsList, listboxUstensilsChevron);
-});
-
-// Listboxs display inputs click events : 
-listboxIngredientsInput.addEventListener("click", (e) => {
-  e.preventDefault();
-  displayListbox(listboxIngredientsList, listboxIngredientsChevron);
-  hideListbox(listboxAppliancesList, listboxAppliancesChevron);
-  hideListbox(listboxUstensilsList, listboxUstensilsChevron);
-});
-listboxAppliancesInput.addEventListener("click", (e) => {
-  e.preventDefault();
-  hideListbox(listboxIngredientsList, listboxIngredientsChevron);
-  displayListbox(listboxAppliancesList, listboxAppliancesChevron);
-  hideListbox(listboxUstensilsList, listboxUstensilsChevron);
-});
-listboxUstensilsInput.addEventListener("click", (e) => {
-  e.preventDefault();
-  hideListbox(listboxIngredientsList, listboxIngredientsChevron);
-  hideListbox(listboxAppliancesList, listboxAppliancesChevron);
-  displayListbox(listboxUstensilsList, listboxUstensilsChevron);
+document.querySelectorAll('.listbox-controls').forEach(element => {
+  element.addEventListener('click', () => {
+    const parentElement = element.closest('.listbox');
+    const listboxList = parentElement.querySelector('.listbox-list');
+    const chevron = parentElement.querySelector('.chevron');
+    toggleListBox(listboxList, chevron);
+  });
 });
 
 // Tags, add click events :
@@ -115,13 +82,13 @@ handleTagClick(listboxIngredientsList);
 handleTagClick(listboxAppliancesList);
 handleTagClick(listboxUstensilsList);
 
-// Tags, remove click events :
+// Tags, remove click events : 
 const handleRemoveTag = () => {
   const tagListHtml = document.querySelectorAll('#tags .tag');
   tagListHtml.forEach(tag => {
       tag.addEventListener('click', () => {
           const tagLabel = tag.getAttribute('data-name');
-          tags = tags.filter(tag => tag.name !== tagLabel); //
+          tags = tags.filter(tag => tag.name !== tagLabel);
           createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags);
           createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags);  
           createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);
@@ -131,30 +98,29 @@ const handleRemoveTag = () => {
           refreshTagList(tags);
           handleRemoveTag();
 
-          search(recipes, tags) 
+          search(recipes, tags)
         });
   })
 }
 
 // Input search keyup event :
 document.querySelector("#search-input").addEventListener("keyup", (e) => {
-    search(recipes, tags)
+    search(recipes, tags) // searchTextInput
 });
 
-// Listboxs list, input search events :
-const handleFilterListboxs = (listboxElementList, $listboxInput, $functionTag, $attribute) => { // $attibute = prototype f° 
-  // Search inputs 
+const handleFilterListboxs = (listboxElementList, $listboxInput, $functionTag, $attribute) => { 
+  // Search inputs :
   const listboxsInputs = document.querySelector($listboxInput)
     listboxsInputs.addEventListener('keyup', (e) => {
-      const refreshedRecipes = search(recipes, tags, false); // cf. search.js search()
-      const elementsArray = $functionTag(refreshedRecipes); 
+      const refreshedRecipes = search(recipes, tags, false);
+      const elementsArray = $functionTag(refreshedRecipes);
       const searchString = e.target.value;
       
       if (searchString.length >= 3) {
         const filteredItemsListboxs = elementsArray.filter((element) => { 
           return element.toLowerCase().includes(searchString.toLowerCase()) //
         });
-        console.log('filtered', filteredItemsListboxs); // 
+        console.log('filtered', filteredItemsListboxs);
         listboxElementList.innerHTML = ""
         refreshListboxsLists(filteredItemsListboxs, listboxElementList, tags, $attribute); //
         handleTagClick(listboxElementList); 
@@ -165,19 +131,20 @@ const handleFilterListboxs = (listboxElementList, $listboxInput, $functionTag, $
       }
     })
 }
+
 handleFilterListboxs(listboxIngredientsList, "#ingredients-input", getIngredients, 'ingredients');
 handleFilterListboxs(listboxAppliancesList, "#appliances-input", getAppliances, 'appliances');
 handleFilterListboxs(listboxUstensilsList, "#ustensils-input", getUstensils, 'ustensils');
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
 /*
 I. Filtrer la liste des ingrédients avec l'input
-1. Evenement sur l'input (keyUp de préférence, change)
-2. Filtrer le tableau d'ingrédients au complet => liste réduite
-3. Rafraîchir l'affichage
+1. Evenement sur l'input (keyUp de préférence, change) // OK
+2. Filtrer le tableau d'ingrédients au complet => liste réduite // OK
+3. Rafraîchir l'affichage // OK
 
-II. Filtrer la liste des ingrédients, ustensils et appliance en fonction des tags déjà ajoutés  
+II. Filtrer la liste des ingrédients, ustensils et appliance en fonction des tags déjà ajoutés // OK  
 
 III. search($tags, $search);
 1. Ajout d'un tag
@@ -190,4 +157,3 @@ IV. Filtrer les ingrédients, ustensils et appliance en fonction des recettes re
 
 V. Nouvelle branche => forEach, filter, find... => for, while...
 */
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
