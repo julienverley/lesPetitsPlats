@@ -1,17 +1,17 @@
 const tagsNode = document.getElementById('tags')
 
-// Add tag(s) : 
-export const addTags = (tag, $tags) => { // $tags = main.js' []
+// Add tag(s) :
+export const addTags = (tag, $tags) => { // $tags' main []
     $tags.push(tag)
-    refreshTagList($tags); // $tags = main.js' []
+    refreshTagList($tags); // $tags' main []
     document.getElementById("ingredients-input").value = "";
     document.getElementById("appliances-input").value = ""; 
     document.getElementById("ustensils-input").value = ""; 
 }
 
 // Refresh list of tag(s) :
-export const refreshTagList = ($tags) => { // $tags = main.js' []
-    tagsNode.innerHTML = ''; // Empty display, not datas of $tags' []
+export const refreshTagList = ($tags) => { // $tags' main []
+    tagsNode.innerHTML = ''; // Empty display, not tags' datas
     $tags.forEach(tag => { 
         const tagCard = document.createElement('div')
         tagCard.innerHTML = `<div>${tag.name}</div> <i class="bi bi-x-circle"></i>`
@@ -20,9 +20,4 @@ export const refreshTagList = ($tags) => { // $tags = main.js' []
         tagCard.setAttribute('data-name', `${tag.name}`) 
         tagsNode.append(tagCard)
     });
-}
-
-// Remove tag(s) : 
-export const removeTags = (tagLabel) => { 
-    tags = tags.filter(tag => tag.label !== tagLabel); 
 }

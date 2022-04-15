@@ -3,10 +3,9 @@ const noDuplicates = ($value, $index, $self) => {
     return $self.indexOf($value) === $index 
 }
 
-// Get items for listboxs :
+// Get items for listboxs : 
 export const getIngredients = ($recipes) => {
     const allIngredients = []
-    //console.log($recipes);
     $recipes.forEach(recipe => { 
         recipe.ingredients.forEach(object => allIngredients.push(object.ingredient))
     })
@@ -45,7 +44,7 @@ export const createListboxsLists = ($recipes, $functionGetItems, $listboxElement
     });
 }
 
-// Refresh listboxs lists :
+// Refresh listboxs lists
 export const refreshListboxsLists = ($filteredItemsListboxs, $listboxElementsList, $tags, $attribute) => {
     $filteredItemsListboxs.forEach(filteredItemListbox => {
         if (!$tags.find(tag => tag.name.toLowerCase() === filteredItemListbox.toLowerCase())) { 
@@ -56,4 +55,3 @@ export const refreshListboxsLists = ($filteredItemsListboxs, $listboxElementsLis
         }     
     })
 }
-

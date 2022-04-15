@@ -1,17 +1,17 @@
 import {
-  toggleListBox
+  toggleListBox,
+  openOnInputListbox,
 } from "./displays/displayListboxs.js";
 import {
   getIngredients,
   getAppliances,
   getUstensils,
   createListboxsLists,
-  refreshListboxsLists,
+  refreshListboxsLists, //
 } from "./factories/buildListboxs.js";
 import {
+  addTags, //
   refreshTagList,
-  addTags, 
-  removeTags, ////////////// ? 
 } from "./factories/buildTags.js"; 
 import {
   search, 
@@ -27,18 +27,6 @@ let tags = [];
 const listboxIngredientsList = document.getElementById("ingredients-list")
 const listboxAppliancesList = document.getElementById("appliances-list")
 const listboxUstensilsList = document.getElementById("ustensils-list")
-// Listboxs buttons nodes :
-const listboxIngredientsBtn = document.getElementById("ingredients-btn")
-const listboxAppliancesBtn = document.getElementById("appliances-btn")
-const listboxUstensilsBtn = document.getElementById("ustensils-btn")
-// Listboxs chevrons nodes :
-const listboxIngredientsChevron = document.getElementById('ingredients-btn-chevron')
-const listboxAppliancesChevron = document.getElementById('appliances-btn-chevron') 
-const listboxUstensilsChevron = document.getElementById('ustensils-btn-chevron') 
-// Listboxs inputs nodes :
-const listboxIngredientsInput = document.getElementById("ingredients-input")
-const listboxAppliancesInput = document.getElementById("appliances-input")
-const listboxUstensilsInput = document.getElementById("ustensils-input")
 
 // Display all recipes on load :
 displayRecipes(recipes)
@@ -48,14 +36,25 @@ createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredient
 createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
 createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags); 
 
-document.querySelectorAll('.listbox-controls').forEach(element => {
+// Listboxs opening with chevron event 
+document.querySelectorAll('.listbox-controls .chevron').forEach(element => {
   element.addEventListener('click', () => {
-    const parentElement = element.closest('.listbox');
+    const parentElement = element.closest('.listbox'); 
     const listboxList = parentElement.querySelector('.listbox-list');
     const chevron = parentElement.querySelector('.chevron');
     toggleListBox(listboxList, chevron);
   });
 });
+
+// Listboxs opening on input event
+document.querySelectorAll('.listbox-input').forEach(element => {
+  element.addEventListener('click', () => {
+    const parentElement = element.closest('.listbox'); 
+    const listboxList = parentElement.querySelector('.listbox-list');
+    const chevron = parentElement.querySelector('.chevron');
+    openOnInputListbox(listboxList, chevron)
+  })
+})
 
 // Tags, add click events :
 export const handleTagClick = (listboxElementList) => { 
@@ -65,7 +64,7 @@ export const handleTagClick = (listboxElementList) => {
       const dataType = e.target.dataset.type
       const name = e.target.textContent
       const object = {name: name, attribute: dataType} 
-      addTags(object, tags);
+      addTags(object, tags); //
       createListboxsLists(recipes, getIngredients, listboxIngredientsList, "ingredients", tags); 
       createListboxsLists(recipes, getAppliances, listboxAppliancesList, "appliances", tags); 
       createListboxsLists(recipes, getUstensils, listboxUstensilsList, "ustensils", tags);
@@ -73,7 +72,6 @@ export const handleTagClick = (listboxElementList) => {
       handleTagClick(listboxAppliancesList);
       handleTagClick(listboxUstensilsList);
       handleRemoveTag();
-      
       search(recipes, tags) 
     });
   });
@@ -97,19 +95,19 @@ const handleRemoveTag = () => {
           handleTagClick(listboxUstensilsList);
           refreshTagList(tags);
           handleRemoveTag();
-
           search(recipes, tags)
         });
   })
 }
 
-// Input search keyup event :
-document.querySelector("#search-input").addEventListener("keyup", (e) => {
+// Main input search keyup event :
+document.querySelector("#search-input").addEventListener("keyup", () => { 
     search(recipes, tags) // searchTextInput
 });
 
+// Listboxs input search keyup event
 const handleFilterListboxs = (listboxElementList, $listboxInput, $functionTag, $attribute) => { 
-  // Search inputs :
+  // Search inputs keyup event :
   const listboxsInputs = document.querySelector($listboxInput)
     listboxsInputs.addEventListener('keyup', (e) => {
       const refreshedRecipes = search(recipes, tags, false);
@@ -120,7 +118,7 @@ const handleFilterListboxs = (listboxElementList, $listboxInput, $functionTag, $
         const filteredItemsListboxs = elementsArray.filter((element) => { 
           return element.toLowerCase().includes(searchString.toLowerCase()) //
         });
-        console.log('filtered', filteredItemsListboxs);
+        //console.log('filtered', filteredItemsListboxs);
         listboxElementList.innerHTML = ""
         refreshListboxsLists(filteredItemsListboxs, listboxElementList, tags, $attribute); //
         handleTagClick(listboxElementList); 
@@ -131,29 +129,6 @@ const handleFilterListboxs = (listboxElementList, $listboxInput, $functionTag, $
       }
     })
 }
-
 handleFilterListboxs(listboxIngredientsList, "#ingredients-input", getIngredients, 'ingredients');
 handleFilterListboxs(listboxAppliancesList, "#appliances-input", getAppliances, 'appliances');
 handleFilterListboxs(listboxUstensilsList, "#ustensils-input", getUstensils, 'ustensils');
-
-
-  
-/*
-I. Filtrer la liste des ingrédients avec l'input
-1. Evenement sur l'input (keyUp de préférence, change) // OK
-2. Filtrer le tableau d'ingrédients au complet => liste réduite // OK
-3. Rafraîchir l'affichage // OK
-
-II. Filtrer la liste des ingrédients, ustensils et appliance en fonction des tags déjà ajoutés // OK  
-
-III. search($tags, $search);
-1. Ajout d'un tag
-2. Suppression d'un tag
-3. Caractères écrits dans le champs principal
-
-// []
-
-IV. Filtrer les ingrédients, ustensils et appliance en fonction des recettes restantes dans les résultats.
-
-V. Nouvelle branche => forEach, filter, find... => for, while...
-*/
