@@ -12,7 +12,9 @@ export const toggleListBox = ($listboxList, $chevron) => {
   }
 }
 
-export const openOnInputListbox = ($listboxList) => {
+export const openOnInputListbox = ($listboxList, $chevron) => {
   $listboxList.classList.remove('hidden')
   $listboxList.classList.add('show')
+  $chevron.classList.add('fa-chevron-up') 
+  $chevron.classList.remove('fa-chevron-down') 
 }

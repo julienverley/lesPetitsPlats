@@ -51,7 +51,8 @@ document.querySelectorAll('.listbox-input').forEach(element => {
   element.addEventListener('click', () => {
     const parentElement = element.closest('.listbox'); 
     const listboxList = parentElement.querySelector('.listbox-list');
-    openOnInputListbox(listboxList)
+    const chevron = parentElement.querySelector('.chevron');
+    openOnInputListbox(listboxList, chevron)
   })
 })
 
