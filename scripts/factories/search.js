@@ -29,7 +29,6 @@ export const search = ($recipes, $tags, $toRefresh = true) => {
   if ($toRefresh === true) {
     displayAfterSearch(recipesAfterSearchInput, $tags);
   }
-  console.log(recipesAfterSearchInput);
   return recipesAfterSearchInput; // final recipe(s) list 
 };
 

@@ -47,7 +47,6 @@ export const createListboxsLists = ($recipes, $functionGetItems, $listboxElement
 // Refresh listboxs lists
 export const refreshListboxsLists = ($filteredItemsListboxs, $listboxElementsList, $tags, $attribute) => {
     $filteredItemsListboxs.forEach(filteredItemListbox => {
-        //console.log(filteredItemListbox);
         if (!$tags.find(tag => tag.name.toLowerCase() === filteredItemListbox.toLowerCase())) { 
             const element = document.createElement('li');
             element.textContent = filteredItemListbox.toLowerCase()

@@ -21,8 +21,3 @@ export const refreshTagList = ($tags) => { // $tags' main []
         tagsNode.append(tagCard)
     });
 }
-
-// Remove tag(s) :
-export const removeTags = (tagLabel) => { 
-    tags = tags.filter(tag => tag.label !== tagLabel); 
-}
