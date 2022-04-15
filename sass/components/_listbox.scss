@@ -9,19 +9,31 @@
     display: flex;
     padding: 0;
 }
+@media screen and (max-width: 1200px) {
+    .listboxs {
+        flex-wrap: wrap;
+        justify-content: center; } }
 
 .listbox {
     flex-wrap: wrap;
     margin: 20px 20px 0 0;
     border-radius: $radius;
     overflow: hidden;
-    min-width: 170px;
+    min-width: 170px; /* 170px */
 }
+
+@media screen and (max-width: 1400px) {
+    .listbox {
+        max-width: 400px; } }
+@media screen and (max-width: 1000px) {
+    .listbox {
+        max-width: 200px; } }
 
 .listbox-controls {
     display: flex;
     justify-content: space-between;
     border-radius: $radius; // 
+    cursor: pointer;
 }
 
 .listbox-btn {
@@ -63,10 +75,8 @@
 
 .listbox-list {
     width: 100%;
-     
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    
     gap: 10px 10px;
     line-height: 1em;
     max-height: 12em;
@@ -79,6 +89,13 @@
     scrollbar-color: rgba(255, 255, 255, 0.5) rgba(255, 255, 255, .1);
     scrollbar-width: thin;
 }
+
+@media screen and (max-width: 1200px) {
+    .listbox-list {
+        grid-template-columns: repeat(2, 1fr); } }
+@media screen and (max-width: 1000px) {
+    .listbox-list {
+        grid-template-columns: repeat(1, 1fr); } }
 
 .listbox-list li {
     cursor: pointer;
