@@ -11,11 +11,10 @@
     display: flex;
     padding: 0;
     @media screen and (max-width: 1200px) {
-        border: solid red;
-        flex-wrap: wrap;
+/*         border: solid red;
+ */        flex-wrap: wrap;
         justify-content: center; }
 }
-
 
 .listbox {
     flex-wrap: wrap;
@@ -27,9 +26,9 @@
             max-width: 400px; }
     @media screen and (max-width: 1000px) {
             max-width: 200px; }
+    @media screen and (max-width: 700px) {
+            max-width: 100%; }
 }
-
-
 
 .listbox-controls {
     display: flex;
@@ -96,13 +95,10 @@
         grid-template-columns: repeat(1, 1fr); }
 }
 
-
-
 .listbox-list li {
     cursor: pointer;
     list-style: none;
 }
-
 
 #ingredients-controls {
     background-color: $blue;
