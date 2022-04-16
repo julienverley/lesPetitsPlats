@@ -2,7 +2,6 @@
 
 .listboxs-section {
     padding: 20px 0;
-    /* margin: 0 25px; */
     width: 90%;
     margin: 0 auto;
 }
@@ -11,8 +10,7 @@
     display: flex;
     padding: 0;
     @media screen and (max-width: 1200px) {
-/*         border: solid red;
- */        flex-wrap: wrap;
+        flex-wrap: wrap;
         justify-content: center; }
 }
 
@@ -21,7 +19,7 @@
     margin: 20px 20px 0 0;
     border-radius: $radius;
     overflow: hidden;
-    min-width: 170px; /* 170px */
+    min-width: 170px; 
     @media screen and (max-width: 1400px) {
             max-width: 400px; }
     @media screen and (max-width: 1000px) {
@@ -33,7 +31,7 @@
 .listbox-controls {
     display: flex;
     justify-content: space-between;
-    border-radius: $radius; // 
+    border-radius: $radius; 
     cursor: pointer;
 }
 
@@ -84,7 +82,7 @@
     color: white;
     font-size: 18px;
     padding: 20px;
-    margin-top: -7px; // 
+    margin-top: -7px; 
     border-radius: 0 0 $radius $radius;
     overflow-y: scroll;
     scrollbar-color: rgba(255, 255, 255, 0.5) rgba(255, 255, 255, .1);

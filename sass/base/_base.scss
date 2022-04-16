@@ -14,16 +14,36 @@ ul {
 }
 
 body {
-/*     border: solid green; */
     margin: 0;
     padding: 0;
 }
 
 main {
-/*     border: solid blue;
- */
     margin: 0;
     padding: 0;
+}
+
+.header-section {
+    margin: 0 auto;
+    display: flex;
+}
+
+.logo {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.vector {
+    align-items: center;
+    transform: translate(-50%);
 }
 
 .container {

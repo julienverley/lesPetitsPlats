@@ -18,15 +18,31 @@ ul {
   margin: 0; }
 
 body {
-  /*     border: solid green; */
   margin: 0;
   padding: 0; }
 
 main {
-  /*     border: solid blue;
- */
   margin: 0;
   padding: 0; }
+
+.header-section {
+  margin: 0 auto;
+  display: flex; }
+
+.logo {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column; }
+
+.logo-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto; }
+
+.vector {
+  align-items: center;
+  transform: translate(-50%); }
 
 .container {
   margin: 0 auto;
@@ -47,7 +63,6 @@ b {
 /* LISTBOX */
 .listboxs-section {
   padding: 20px 0;
-  /* margin: 0 25px; */
   width: 90%;
   margin: 0 auto; }
 
@@ -56,8 +71,6 @@ b {
   padding: 0; }
   @media screen and (max-width: 1200px) {
     .listboxs {
-      /*         border: solid red;
- */
       flex-wrap: wrap;
       justify-content: center; } }
 
@@ -66,8 +79,7 @@ b {
   margin: 20px 20px 0 0;
   border-radius: 5px;
   overflow: hidden;
-  min-width: 170px;
-  /* 170px */ }
+  min-width: 170px; }
   @media screen and (max-width: 1400px) {
     .listbox {
       max-width: 400px; } }
@@ -200,25 +212,16 @@ b {
 
 /* Cards */
 .results-section {
-  /* 
-    display: flex;
-    flex-wrap: wrap;
-     */
   width: 1296px;
   display: grid;
-  /* justify-content: center; */
   width: 90%;
   padding: 0;
   margin: 0 auto; }
 
 .cards {
-  /*     border: solid red;
- */
-  /* width: 100%; */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 40px 6%;
-  /* 6% */ }
+  gap: 40px 6%; }
   @media screen and (max-width: 1900px) {
     .cards {
       grid-template-columns: repeat(3, 1fr); } }
@@ -227,7 +230,6 @@ b {
       grid-template-columns: repeat(2, 1fr); } }
   @media screen and (max-width: 900px) {
     .cards {
-      /* 1000px */
       grid-template-columns: repeat(1, 1fr); } }
 
 .card {
@@ -238,7 +240,7 @@ b {
   margin: 0 auto; }
   @media screen and (min-width: 800px) {
     .card {
-      max-width: 500px; } }
+      max-width: 400px; } }
 
 .card-header {
   height: 178px;
@@ -289,8 +291,6 @@ b {
 
 /* Search */
 .search-section {
-  /*     border: solid red;
- */
   width: 90%;
   margin: 0 auto; }
 

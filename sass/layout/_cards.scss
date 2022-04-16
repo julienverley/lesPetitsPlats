@@ -1,33 +1,24 @@
 /* Cards */
 
 .results-section {
-    /* 
-    display: flex;
-    flex-wrap: wrap;
-     */
     width: 1296px;
     display: grid;
-    /* justify-content: center; */
     width: 90%;
     padding: 0;
     margin: 0 auto;
-    
 }
 
 .cards {
-/*     border: solid red;
- */
-    /* width: 100%; */
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 40px 6%; /* 6% */
+    gap: 40px 6%; 
     @media screen and (max-width: 1900px) {
         grid-template-columns: repeat(3, 1fr)
     }
     @media screen and (max-width: 1400px) {
         grid-template-columns: repeat(2, 1fr)
     }
-    @media screen and (max-width: 900px) { /* 1000px */
+    @media screen and (max-width: 900px) { 
         grid-template-columns: repeat(1, 1fr)
     } 
 }
@@ -38,7 +29,7 @@
     display: block;
     margin: 0 auto;
     @media screen and (min-width: 800px) {
-        max-width: 500px;
+        max-width: 400px;
     }
 }
 .card-header {
@@ -69,10 +60,9 @@
     justify-content: space-between;
 }
 .recipe-ingredients {
-    min-width: 171px; // 171px
+    min-width: 171px; 
     font-size: 11px;
     padding: 2px;
-    //display: flex;
 }
 .ingredient-quantity-unit {
     font-size: 11px;
@@ -82,13 +72,10 @@
     text-overflow: ellipsis;
 }
 .recipe-text {
-    min-width: 171px; // 171px
+    min-width: 171px; 
     max-height: 109px;
-
     overflow: hidden;
-    //white-space: nowrap; // ne fonctionne que sur une seule ligne ; manquent les ... 
     text-overflow: ellipsis;
-
     font-size: x-small;
     padding: 2px;
 }
