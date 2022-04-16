@@ -8,42 +8,38 @@
     width: 1296px;
     display: grid;
     /* justify-content: center; */
+    width: 90%;
     padding: 0;
-    /* margin: 0; */
+    margin: 0 auto;
     
 }
 
 .cards {
+    border: solid red;
 
-/*     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; 
-    justify-items: center; 
- */
- padding: 0;
- 
- display: grid;
- grid-template-columns: repeat(3, 1fr);
- gap: 40px 6%;
-
-/*  display: flex;
- flex-wrap: wrap;
- */
-
- @media screen and (max-width: 1400px) {
-     grid-template-columns: repeat(2, 1fr)
- }
- @media screen and (max-width: 1000px) {
-     grid-template-columns: repeat(1, 1fr)
- }
- 
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 6%; /* 6% */
+    @media screen and (max-width: 1900px) {
+        grid-template-columns: repeat(3, 1fr)
+    }
+    @media screen and (max-width: 1400px) {
+        grid-template-columns: repeat(2, 1fr)
+    }
+    @media screen and (max-width: 1000px) {
+        grid-template-columns: repeat(1, 1fr)
+    }
 }
 .card {
-    width: 380px;
+    max-width: 380px;
     height: 364px;
-    /* margin: 25px; */
     justify-content: space-between;
     display: block;
     margin: 0 auto;
+    @media screen and (min-width: 800px) {
+        max-width: 550px;
+    }
 }
 .card-header {
     height: 178px;
@@ -73,7 +69,7 @@
     justify-content: space-between;
 }
 .recipe-ingredients {
-    max-width: 171px; // 171px
+    min-width: 171px; // 171px
     font-size: 11px;
     padding: 2px;
     //display: flex;
@@ -86,7 +82,7 @@
     text-overflow: ellipsis;
 }
 .recipe-text {
-    max-width: 171px; // 171px
+    min-width: 171px; // 171px
     max-height: 109px;
 
     overflow: hidden;

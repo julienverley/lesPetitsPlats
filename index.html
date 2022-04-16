@@ -19,7 +19,7 @@
     <!-- HEADER -->
     <header>
       <section class="header-section"> <!-- py-3 -->
-        <div class="container">
+        <div> <!-- class="container" -->
           <div class="row justify-content-center"><!-- logo Vector -->
             <div class="logo-vector col-1 py-3">
               <img src="./img/vector.svg" alt="Logo Vector" class="w-52">
@@ -39,7 +39,7 @@
       
       <!-- SEARCH --> 
       <section class="search-section"> <!-- py-3 -->
-        <div class="container">
+        <div> <!-- class="container" -->
           <div class="search-field bg-light p-4">
             <!-- <div class="col-12 py-2"></div> -->
             <input type="text" placeholder="Rechercher une recette" class="bg-light" id="search-input">
@@ -53,8 +53,8 @@
 
       <!-- LISTBOXS -->
       <section class="listboxs-section"> <!-- py-3 -->
-        <div class="container">
-          <div class="listboxs container">
+        <div> <!-- class="container" -->
+          <div class="listboxs"> <!-- container -->
             <!-- Ingredients -->
             <div id="ingredients-listbox" class="listbox" data-type="ingredients">
                 <div id="ingredients-controls" class="listbox-controls" data-type="ingredients">
@@ -91,11 +91,9 @@
       </section>
 
       <!-- CARDS -->
-       
-
-      <section class="results-section container"><!-- class="py-3 py-4 px-4" -->
+      <section class="results-section"><!-- class="py-3 py-4 px-4" --> <!-- container !! -->
         <!-- NO RESULT -->
-        <span id="no-search-result" class="hidden container">
+        <span id="no-search-result" class="hidden "> <!-- container -->
           Aucune recette ne correspond à votre critère... vous pouvez chercher "tarte aux pommes", "poisson", etc.
         </span>
 
