@@ -31,6 +31,9 @@
     @media screen and (min-width: 800px) {
         max-width: 400px;
     }
+    /* @media screen and (max-width: 500px) { 
+        width: 400px;
+    }  */
 }
 .card-header {
     height: 178px;
@@ -63,6 +66,9 @@
     min-width: 171px; 
     font-size: 11px;
     padding: 2px;
+    @media screen and (max-width: 500px) { 
+        max-width: 100px;
+    } 
 }
 .ingredient-quantity-unit {
     font-size: 11px;
@@ -78,4 +84,7 @@
     text-overflow: ellipsis;
     font-size: x-small;
     padding: 2px;
+    @media screen and (max-width: 500px) { 
+        max-width: 200px;
+    } 
 }

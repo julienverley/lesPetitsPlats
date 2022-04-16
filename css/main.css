@@ -237,7 +237,10 @@ b {
   height: 364px;
   justify-content: space-between;
   display: block;
-  margin: 0 auto; }
+  margin: 0 auto;
+  /* @media screen and (max-width: 500px) { 
+        width: 400px;
+    }  */ }
   @media screen and (min-width: 800px) {
     .card {
       max-width: 400px; } }
@@ -273,6 +276,9 @@ b {
   min-width: 171px;
   font-size: 11px;
   padding: 2px; }
+  @media screen and (max-width: 500px) {
+    .recipe-ingredients {
+      max-width: 100px; } }
 
 .ingredient-quantity-unit {
   font-size: 11px;
@@ -288,6 +294,9 @@ b {
   text-overflow: ellipsis;
   font-size: x-small;
   padding: 2px; }
+  @media screen and (max-width: 500px) {
+    .recipe-text {
+      max-width: 200px; } }
 
 /* Search */
 .search-section {
