@@ -1,49 +1,39 @@
 /* Cards */
 
 .results-section {
-    /* 
-    display: flex;
-    flex-wrap: wrap;
-     */
     width: 1296px;
     display: grid;
-    /* justify-content: center; */
+    width: 90%;
     padding: 0;
-    /* margin: 0; */
-    
+    margin: 0 auto;
 }
 
 .cards {
-
-/*     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; 
-    justify-items: center; 
- */
- padding: 0;
- 
- display: grid;
- grid-template-columns: repeat(3, 1fr);
- gap: 40px 6%;
-
-/*  display: flex;
- flex-wrap: wrap;
- */
-
- @media screen and (max-width: 1400px) {
-     grid-template-columns: repeat(2, 1fr)
- }
- @media screen and (max-width: 1000px) {
-     grid-template-columns: repeat(1, 1fr)
- }
- 
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 6%; 
+    @media screen and (max-width: 1900px) {
+        grid-template-columns: repeat(3, 1fr)
+    }
+    @media screen and (max-width: 1400px) {
+        grid-template-columns: repeat(2, 1fr)
+    }
+    @media screen and (max-width: 900px) { 
+        grid-template-columns: repeat(1, 1fr)
+    } 
 }
 .card {
-    width: 380px;
+    min-width: 100%;
     height: 364px;
-    /* margin: 25px; */
     justify-content: space-between;
     display: block;
     margin: 0 auto;
+    @media screen and (min-width: 800px) {
+        max-width: 350px;
+    }
+    /* @media screen and (max-width: 500px) { 
+        width: 400px;
+    }  */
 }
 .card-header {
     height: 178px;
@@ -73,10 +63,15 @@
     justify-content: space-between;
 }
 .recipe-ingredients {
-    max-width: 171px; // 171px
+    /* min-width: 171px;  */
     font-size: 11px;
     padding: 2px;
-    //display: flex;
+    @media screen and (max-width: 500px) { 
+        max-width: 150px; //
+    } 
+    @media screen and (min-width: 500px) { 
+        min-width: 171px; 
+    } 
 }
 .ingredient-quantity-unit {
     font-size: 11px;
@@ -86,13 +81,16 @@
     text-overflow: ellipsis;
 }
 .recipe-text {
-    max-width: 171px; // 171px
+    /* min-width: 171px;  */
     max-height: 109px;
-
     overflow: hidden;
-    //white-space: nowrap; // ne fonctionne que sur une seule ligne ; manquent les ... 
     text-overflow: ellipsis;
-
     font-size: x-small;
     padding: 2px;
+    @media screen and (max-width: 500px) { 
+        max-width: 170px; //
+    } 
+    @media screen and (min-width: 500px) { 
+        min-width: 171px; 
+    } 
 }
