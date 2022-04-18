@@ -15,17 +15,9 @@ const noSearchResult = document.getElementById('no-search-result')
 
 // Search :
 export const search = ($recipes, $tags, $toRefresh = true) => {
-  const searchInput = document
-    .getElementById("search-input")
-    .value.toLowerCase(); 
-  const recipesAfterTagFilter = getRecipesByTags(
-    $recipes, 
-    $tags
-  );
-  const recipesAfterSearchInput = getRecipesBySearchInput( 
-    recipesAfterTagFilter,
-    searchInput
-  );
+  const searchInput = document.getElementById("search-input").value.toLowerCase(); 
+  const recipesAfterTagFilter = getRecipesByTags($recipes, $tags);
+  const recipesAfterSearchInput = getRecipesBySearchInput(recipesAfterTagFilter, searchInput);
   if ($toRefresh === true) {
     displayAfterSearch(recipesAfterSearchInput, $tags);
   }
@@ -34,27 +26,9 @@ export const search = ($recipes, $tags, $toRefresh = true) => {
 
 // Display recipes after search (with listboxslists updates) :
 export const displayAfterSearch = ($refreshedRecipes, $tags) => {
-  createListboxsLists(
-    $refreshedRecipes,
-    getIngredients,
-    listboxIngredientsList,
-    "ingredients",
-    $tags
-  );
-  createListboxsLists(
-    $refreshedRecipes,
-    getAppliances,
-    listboxAppliancesList,
-    "appliances",
-    $tags
-  );
-  createListboxsLists(
-    $refreshedRecipes,
-    getUstensils,
-    listboxUstensilsList,
-    "ustensils",
-    $tags
-  );
+  createListboxsLists($refreshedRecipes, getIngredients, listboxIngredientsList, "ingredients", $tags);
+  createListboxsLists($refreshedRecipes, getAppliances, listboxAppliancesList, "appliances", $tags);
+  createListboxsLists($refreshedRecipes, getUstensils, listboxUstensilsList, "ustensils", $tags);
   handleTagClick(listboxIngredientsList); 
   handleTagClick(listboxAppliancesList);
   handleTagClick(listboxUstensilsList);
