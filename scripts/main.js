@@ -118,9 +118,8 @@ const handleFilterListboxs = (listboxElementList, $listboxInput, $functionTag, $
         const filteredItemsListboxs = elementsArray.filter((element) => { 
           return element.toLowerCase().includes(searchString.toLowerCase()) //
         });
-        //console.log('filtered', filteredItemsListboxs);
         listboxElementList.innerHTML = ""
-        refreshListboxsLists(filteredItemsListboxs, listboxElementList, tags, $attribute); //
+        refreshListboxsLists(filteredItemsListboxs, listboxElementList, tags, $attribute); // filteredItemsListboxs... search(..., ..., false)
         handleTagClick(listboxElementList); 
       } else {
         listboxElementList.innerHTML = ""
