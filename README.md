@@ -16,7 +16,7 @@ Julien Verley
 
 ### Visit on GitHub pages
 
-https://julfrontdev.github.io/julien_verley_7_30092021/
+https://julienverley.github.io/lesPetitsPlats/
 
 ### Install on your computer
 
